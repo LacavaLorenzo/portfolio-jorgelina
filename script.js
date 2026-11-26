@@ -37,7 +37,7 @@
       const t = setInterval(() => { b.textContent = (b.dataset.prefix || "") + ++n; if (n >= end) clearInterval(t); }, 90);
     });
   }), { threshold: 0.15 });
-  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .labels, .notion, .browser, .mailapp, .service, .claim")
+  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .labels, .notion, .planner, .soft, .ecojourney, .service, .claim")
     .forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 80 + "ms"; io.observe(el); });
 
   /* ---------- Inclinación 3D al pasar el mouse ---------- */
@@ -199,11 +199,6 @@
   });
   cm.addEventListener("click", e => { if (e.target === cm || e.target.closest(".copymodal__close")) cmClose(); });
   addEventListener("keydown", e => { if (e.key === "Escape" && !cm.hidden) cmClose(); });
-  // en el celu: frenar mientras se toca
-  $$(".marquee-copys").forEach(m => {
-    m.addEventListener("touchstart", () => m.classList.add("is-paused"), { passive: true });
-    m.addEventListener("touchend", () => setTimeout(() => m.classList.remove("is-paused"), 1500));
-  });
 
   /* ---------- Bandeja de correos ---------- */
   $$(".mailapp").forEach(app => {
@@ -234,6 +229,92 @@
         b.textContent = (end * k).toFixed(dec).replace(".", ",") + suf; if (k < 1) requestAnimationFrame(step); };
       requestAnimationFrame(step);
     }), { threshold: .6 }).observe(b);
+  });
+
+  /* ---------- Copys: corren solos y se arrastran ---------- */
+  $$(".marquee-copys").forEach(m => {
+    const track = m.querySelector(".marquee-copys__track");
+    const speed = (+m.dataset.speed || 35) * (+m.dataset.dir || 1); // px por segundo
+    let x = 0, half = 0, last = 0, hover = false, drag = null, moved = 0, visible = false, resumeAt = 0;
+    const measure = () => { half = track.scrollWidth / 2; };
+    const wrap = () => { if (!half) return; while (x <= -half) x += half; while (x > 0) x -= half; };
+    const paint = () => { track.style.transform = "translateX(" + x + "px)"; };
+    const tick = t => {
+      const dt = last ? Math.min(t - last, 64) / 1000 : 0; last = t;
+      if (visible && !drag && !hover && !reduce && t > resumeAt) { x -= speed * dt; wrap(); paint(); }
+      requestAnimationFrame(tick);
+    };
+    measure(); addEventListener("resize", measure);
+    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; measure(); })).observe(m);
+    requestAnimationFrame(tick);
+    m.addEventListener("mouseenter", () => hover = true);
+    m.addEventListener("mouseleave", () => hover = false);
+    m.addEventListener("pointerdown", e => {
+      if (e.button !== 0) return;
+      drag = { sx: e.clientX, ox: x }; moved = 0;
+    });
+    addEventListener("pointermove", e => {
+      if (!drag) return;
+      const dx = e.clientX - drag.sx; moved = Math.max(moved, Math.abs(dx));
+      if (moved > 5) m.classList.add("is-dragging");
+      x = drag.ox + dx; wrap(); paint();
+    });
+    const end = () => {
+      if (!drag) return;
+      drag = null; resumeAt = performance.now() + 1200;
+      setTimeout(() => m.classList.remove("is-dragging"), 0);
+    };
+    addEventListener("pointerup", end); addEventListener("pointercancel", end);
+    // si fue arrastre, no abrir el copy
+    m.addEventListener("click", e => { if (moved > 5) { e.stopPropagation(); e.preventDefault(); } }, true);
+    // ruedita / trackpad horizontal
+    m.addEventListener("wheel", e => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); x -= e.deltaX; wrap(); paint(); resumeAt = performance.now() + 1200; }
+    }, { passive: false });
+  });
+
+  /* ---------- Calendario 500 RPM ---------- */
+  $$(".planner").forEach(p => {
+    const rows = $$(".planner__row", p), count = p.querySelector(".planner__count");
+    const upd = () => { const v = rows.filter(r => !r.hidden); count.textContent = v.length + " piezas · " + v.filter(r => r.dataset.type === "story").length + " historias · " + v.filter(r => r.dataset.type === "post").length + " post"; };
+    $$(".filter", p).forEach(b => b.addEventListener("click", () => {
+      $$(".filter", p).forEach(x => x.classList.toggle("is-active", x === b));
+      rows.forEach(r => r.hidden = b.dataset.f !== "all" && r.dataset.type !== b.dataset.f);
+      upd();
+    }));
+    rows.filter(r => r.hasAttribute("data-open")).forEach(r => r.addEventListener("click", () => r.classList.toggle("is-open")));
+    upd();
+  });
+
+  /* ---------- Notion Di Cuore: filtrar y contar ---------- */
+  $$(".notion").forEach(n => {
+    const rows = $$(".nrow:not(.nrow--head)", n);
+    const upd = () => {
+      const v = rows.filter(r => !r.hidden);
+      const c = k => v.reduce((s, r) => s + (r.dataset.fmt.toLowerCase().includes(k) ? 1 : 0), 0);
+      n.querySelector('[data-n="post"]').textContent = c("post");
+      n.querySelector('[data-n="story"]').textContent = c("story");
+    };
+    $$(".nfilter", n).forEach(b => b.addEventListener("click", () => {
+      $$(".nfilter", n).forEach(x => x.classList.toggle("is-active", x === b));
+      rows.forEach(r => r.hidden = b.dataset.acc !== "all" && r.dataset.acc !== b.dataset.acc);
+      upd();
+    }));
+    upd();
+  });
+
+  /* ---------- EcoBite: recorrido ---------- */
+  $$(".ecojourney").forEach(j => {
+    const steps = $$(".ecostep", j), views = $$(".ecoview", j), url = j.querySelector(".ecoscreen__url"), bar = j.querySelector(".ecoprog i");
+    const urls = ["instagram.com/ecobite", "ecobite.com", "Correo · Bienvenido/a a EcoBite", "Correo · Tu comida sigue en el carrito"];
+    const go = i => {
+      steps.forEach((s, k) => s.classList.toggle("is-active", k === i));
+      views.forEach((v, k) => v.classList.toggle("is-active", k === i));
+      url.textContent = (i < 2 ? "🔒 " : "✉️ ") + urls[i];
+      bar.style.width = (i + 1) * 25 + "%";
+    };
+    steps.forEach((s, i) => s.addEventListener("click", () => go(i)));
+    $$(".eco-go", j).forEach(b => b.addEventListener("click", () => go(+b.dataset.go)));
   });
 
   /* ---------- Visor de trabajos (lightbox) ---------- */
