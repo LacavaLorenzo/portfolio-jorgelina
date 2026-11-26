@@ -8,7 +8,7 @@ Todo se hace desde la página de GitHub, con el lápiz ✏️ ("Edit this file")
 
 **1. Tus datos de contacto y apellido** → abrí `datos.js` y completá lo que está entre comillas. Si dejás algo vacío, ese botón no aparece.
 
-**2. Fotos y trabajos** → entrá a la carpeta `img`, tocá **Add file → Upload files** y subí cada imagen con el nombre que figura en `img/LEEME.md` (por ejemplo `foto.jpg`). Si querés cambiar una, subí otra con el mismo nombre.
+**2. Fotos y trabajos** → están en `img/`, una carpeta por trabajo. Para cambiar una, subí otra con el mismo nombre (detalle en `img/LEEME.md`).
 
 **3. Textos** → abrí `index.html`, buscá la frase que quieras cambiar (Ctrl+F) y escribí encima. Cambiá solo el texto, sin tocar lo que está entre `< >`.
 
