@@ -37,7 +37,7 @@
       const t = setInterval(() => { b.textContent = (b.dataset.prefix || "") + ++n; if (n >= end) clearInterval(t); }, 90);
     });
   }), { threshold: 0.15 });
-  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .mock, .igprofile, .desk, .feedcard, .service, .claim")
+  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .labels, .notion, .browser, .mailapp, .service, .claim")
     .forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 80 + "ms"; io.observe(el); });
 
   /* ---------- Inclinación 3D al pasar el mouse ---------- */
@@ -162,8 +162,6 @@
       setTimeout(() => { img.src = c.dataset.img; img.style.opacity = 1; }, 150);
       post.querySelector(".igpost__caption").scrollTop = 0;
     }));
-    const like = post.querySelector(".like");
-    like.addEventListener("click", () => { like.classList.toggle("is-on"); like.textContent = like.classList.contains("is-on") ? "♥" : "♡"; });
   });
 
   /* ---------- Mockups: elegir fragancia ---------- */
@@ -181,6 +179,62 @@
 
   /* ---------- Tarjeta de Nadia que se da vuelta ---------- */
   $$(".bizcard").forEach(c => c.addEventListener("click", () => c.classList.toggle("is-flipped")));
+
+  /* ---------- Copys en carrusel: leer completo ---------- */
+  const cm = document.createElement("div");
+  cm.className = "copymodal"; cm.hidden = true;
+  cm.innerHTML = '<div class="copymodal__box" role="dialog" aria-modal="true"><button class="copymodal__close" aria-label="Cerrar">✕</button><div class="copymodal__content"></div></div>';
+  document.body.appendChild(cm);
+  let cmLast;
+  const cmClose = () => { cm.hidden = true; document.body.classList.remove("no-scroll"); if (cmLast) cmLast.focus(); };
+  const cmOpen = c => {
+    cmLast = c;
+    cm.querySelector(".copymodal__content").innerHTML = c.innerHTML;
+    cm.hidden = false; document.body.classList.add("no-scroll");
+    cm.querySelector(".copymodal__close").focus();
+  };
+  $$(".ccard").forEach(c => {
+    c.addEventListener("click", () => cmOpen(c));
+    c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); cmOpen(c); } });
+  });
+  cm.addEventListener("click", e => { if (e.target === cm || e.target.closest(".copymodal__close")) cmClose(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !cm.hidden) cmClose(); });
+  // en el celu: frenar mientras se toca
+  $$(".marquee-copys").forEach(m => {
+    m.addEventListener("touchstart", () => m.classList.add("is-paused"), { passive: true });
+    m.addEventListener("touchend", () => setTimeout(() => m.classList.remove("is-paused"), 1500));
+  });
+
+  /* ---------- Bandeja de correos ---------- */
+  $$(".mailapp").forEach(app => {
+    const items = $$(".mailitem", app), mails = $$(".mail", app);
+    items.forEach(it => it.addEventListener("click", () => {
+      items.forEach(x => x.classList.toggle("is-active", x === it));
+      it.classList.remove("is-unread");
+      mails.forEach((m, i) => m.classList.toggle("is-active", i === +it.dataset.mail));
+      app.querySelector(".mailapp__read").scrollTop = 0;
+    }));
+  });
+
+  /* ---------- Likes ---------- */
+  $$(".like").forEach(like => like.addEventListener("click", () => {
+    like.classList.toggle("is-on");
+    like.textContent = like.classList.contains("is-on") ? "♥" : "♡";
+  }));
+
+  /* ---------- EcoBite: números que suben ---------- */
+  document.addEventListener("subtab", () => {});
+  $$("[data-eco]").forEach(b => {
+    const end = parseFloat(b.dataset.eco), suf = b.dataset.suf || "", dec = end % 1 ? 1 : 0;
+    new IntersectionObserver((es, o) => es.forEach(e => {
+      if (!e.isIntersecting) return; o.disconnect();
+      if (reduce) return;
+      let t0 = null;
+      const step = t => { t0 = t0 || t; const k = Math.min((t - t0) / 1200, 1);
+        b.textContent = (end * k).toFixed(dec).replace(".", ",") + suf; if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }), { threshold: .6 }).observe(b);
+  });
 
   /* ---------- Visor de trabajos (lightbox) ---------- */
   const lb = document.querySelector(".lightbox");
