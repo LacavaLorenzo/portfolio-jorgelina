@@ -10,10 +10,25 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Estrella cromada reutilizable (no tocar) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#b9c6ee"/>
+      <stop offset=".55" stop-color="#5b6fa8"/><stop offset=".75" stop-color="#e9eeff"/><stop offset="1" stop-color="#8794c4"/>
+    </linearGradient>
+    <symbol id="star" viewBox="0 0 100 100">
+      <path d="M50 4 L61 37 L96 38 L68 59 L78 94 L50 73 L22 94 L32 59 L4 38 L39 37 Z" fill="url(#chrome)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="progress" aria-hidden="true"></div>
 
 <!-- ================= MENÚ ================= -->
 <header class="nav">
@@ -27,194 +42,266 @@
 </header>
 
 <!-- ================= PORTADA ================= -->
-<section class="hero" id="inicio">
-  <div class="blob blob--1"></div>
-  <div class="blob blob--2"></div>
-  <span class="star s1">✦</span><span class="star s2">★</span><span class="star s3">✦</span>
+<section class="hero sky" id="inicio">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
 
-  <div class="hero__inner">
-    <p class="eyebrow">Community Manager · Portfolio 2026</p>
-    <h1 class="hero__title">
-      <span class="hero__hola">¡Hola! soy</span>
-      Jorgelina<span class="js-apellido"></span>
-    </h1>
-    <p class="hero__sub">Hago que las marcas tengan <em>voz propia</em> en redes:
-      planifico, escribo, diseño y mido lo que funciona.</p>
-    <div class="hero__ctas">
-      <a href="#trabajos" class="btn">Ver mis trabajos</a>
-      <a href="#contacto" class="btn btn--ghost">Escribime</a>
+  <div class="stamp-wrap">
+  <div class="stamp">
+    <div class="stamp__inner">
+      <div class="stamp__top"><span>¡Hola!</span><span>Bienvenido</span><span>a mi</span></div>
+      <h1 class="stamp__title">portfolio</h1>
+      <div class="stamp__bottom">
+        <span class="stamp__year">20<br>26</span>
+        <span class="stamp__role">Community<br>Manager</span>
+      </div>
     </div>
   </div>
-
-  <!-- Mini "post" decorativo -->
-  <div class="hero__post" aria-hidden="true">
-    <div class="post__top"><span class="avatar"></span><b>tu.marca</b><span class="dots">•••</span></div>
-    <div class="post__img">
-      <span class="post__quote">“Contenido que dan ganas de leer.”</span>
-    </div>
-    <div class="post__bar">♡ &nbsp; 💬 &nbsp; ➤ <span class="saved">🔖</span></div>
-    <p class="post__likes">A <b>tu próximo cliente</b> y 1.284 personas más les gusta esto</p>
   </div>
+
+  <!-- Estrellas que se pueden arrastrar -->
+  <svg class="chrome-star drag" style="--x:16%;--y:58%;--s:110px;--r:-18deg"><use href="#star"/></svg>
+  <svg class="chrome-star drag" style="--x:74%;--y:20%;--s:80px;--r:14deg"><use href="#star"/></svg>
+  <svg class="chrome-star drag" style="--x:80%;--y:70%;--s:56px;--r:30deg"><use href="#star"/></svg>
+
+  <p class="hero__name">Jorgelina<span class="js-apellido"></span></p>
+  <p class="hero__sub">Estrategia, copy y diseño para marcas con <em>voz propia</em>.</p>
+  <span class="hint">✦ psst: las estrellas se pueden arrastrar</span>
+  <a href="#indice" class="scroll-down" aria-label="Bajar">↓</a>
 </section>
 
-<!-- Cinta de roles -->
+<!-- ================= ÍNDICE ================= -->
+<section class="index" id="indice">
+  <h2 class="index__title">Índice</h2>
+  <ol class="index__list">
+    <li><a href="#sobre-mi"><span>01/</span> Sobre mí</a></li>
+    <li><a href="#caso-500rpm"><span>02/</span> Caso 500 RPM</a></li>
+    <li><a href="#di-cuore"><span>03/</span> Agencia Di Cuore</a></li>
+    <li><a href="#diseno"><span>04/</span> Diseño</a></li>
+    <li><a href="#contacto"><span>05/</span> Contacto</a></li>
+  </ol>
+</section>
 <div class="marquee" aria-label="Roles">
   <div class="marquee__track">
-    <span>Community Manager</span><i>✦</i><span>Social Media Manager</span><i>✦</i><span>Content Creator</span><i>✦</i><span>Copywriter</span><i>✦</i><span>Social Media Designer</span><i>✦</i>
-    <span>Community Manager</span><i>✦</i><span>Social Media Manager</span><i>✦</i><span>Content Creator</span><i>✦</i><span>Copywriter</span><i>✦</i><span>Social Media Designer</span><i>✦</i>
+    <span>Community Manager</span><i>★</i><span>Social Media Manager</span><i>★</i><span>Content Creator</span><i>★</i><span>Copywriter</span><i>★</i><span>Social Media Designer</span><i>★</i>
+    <span>Community Manager</span><i>★</i><span>Social Media Manager</span><i>★</i><span>Content Creator</span><i>★</i><span>Copywriter</span><i>★</i><span>Social Media Designer</span><i>★</i>
   </div>
 </div>
 
-<!-- ================= SOBRE MÍ ================= -->
+<!-- ================= SOBRE MÍ (scrapbook) ================= -->
 <section class="section about" id="sobre-mi">
-  <div class="about__photo">
-    <!-- ✏️ FOTO: subí tu foto a la carpeta img/ con el nombre foto.jpg -->
-    <div class="slot slot--round" data-label="Tu foto acá">
-      <img src="img/foto.jpg" alt="Foto de Jorgelina" onerror="this.remove()">
+  <h2 class="script-title">Sobre mí</h2>
+  <div class="scrap">
+    <!-- ✏️ FOTO: subí tu foto a img/ con el nombre foto.jpg -->
+    <figure class="polaroid" data-tilt>
+      <span class="tape"></span>
+      <div class="slot" data-label="Tu foto acá"><img src="img/foto.jpg" alt="Foto de Jorgelina" onerror="this.remove()"></div>
+      <figcaption>yo, pensando el próximo post ✦</figcaption>
+    </figure>
+
+    <div class="note note--big" data-tilt>
+      <span class="tape tape--right"></span>
+      <p class="note__hello">¡Hola! Soy Jorgelina</p>
+      <p>Soy Community Manager y me encanta que cada cuenta tenga <strong>orden y personalidad</strong>.</p>
+      <p>Trabajo con marcas de educación, salud, emprendimientos y ONGs. Armo el calendario de contenido, escribo copys con la voz de cada marca, diseño piezas coherentes y cierro cada mes con un reporte para saber qué funcionó.</p>
+      <p>Lo que más disfruto es agarrar un tema difícil y convertirlo en algo que la gente quiera leer, comentar y compartir.</p>
     </div>
-    <span class="sticker">¡Creemos algo increíble!</span>
-  </div>
-  <div class="about__text">
-    <h2>Sobre mí</h2>
-    <p class="lead">Soy Community Manager y me encanta que cada cuenta tenga <strong>orden y personalidad</strong>.</p>
-    <p>Trabajo con marcas de educación, salud, emprendimientos y ONGs. Armo el calendario de contenido, escribo copys con la voz de cada marca, diseño piezas que se vean coherentes y cierro cada mes con un reporte para saber qué funcionó y qué no.</p>
-    <p>Lo que más disfruto es agarrar un tema difícil y convertirlo en algo que la gente quiera leer, comentar y compartir.</p>
-    <div class="stats">
-      <div><b>+10</b><span>marcas</span></div>
-      <div><b>7</b><span>rubros</span></div>
-      <div><b>∞</b><span>ideas en notas del celu</span></div>
+
+    <div class="note note--blue" data-tilt>
+      <h4>También me postulo como</h4>
+      <ul><li>Social Media Manager</li><li>Content Creator</li><li>Copywriter</li><li>Social Media Designer</li></ul>
+    </div>
+
+    <div class="note note--ticket" data-tilt>
+      <h4>Herramientas</h4>
+      <ul class="ticket"><li>Canva</li><li>Meta Business Suite</li><li>Google Sheets</li><li>IA (diseño y copy)</li><li>Instagram</li><li>LinkedIn</li></ul>
+      <div class="barcode"></div>
+    </div>
+
+    <div class="counter" data-tilt>
+      <b data-count="10" data-prefix="+">0</b><span>marcas</span>
+      <b data-count="7">0</b><span>rubros</span>
     </div>
   </div>
 </section>
 
 <!-- ================= TRABAJOS ================= -->
-<section class="section" id="trabajos">
-  <h2 class="center">Trabajos seleccionados</h2>
-  <p class="center muted">Algunas de las cuentas y marcas con las que trabajé.</p>
+<div id="trabajos"></div>
 
-  <!-- ---------- 500 RPM (caso destacado) ---------- -->
-  <article class="case">
-    <div class="case__head">
-      <span class="tag">Caso destacado · 2025</span>
-      <h3>500 RPM</h3>
-      <p class="case__role">Community Manager &amp; Copywriter · Fundación de energías renovables</p>
-    </div>
-    <div class="case__body">
-      <div class="case__text">
+<!-- ---------- 500 RPM ---------- -->
+<section class="case sky" id="caso-500rpm">
+  <div class="cloud c2"></div><div class="cloud c4"></div>
+  <div class="case__wrap">
+    <header class="case__header">
+      <h2 class="script-title script-title--light">500 RPM</h2>
+      <span class="badge"><svg><use href="#star"/></svg> Caso de estudio · 2025</span>
+    </header>
+
+    <div class="case__grid">
+      <div class="paper" data-tilt>
+        <span class="tape"></span>
+        <h3>Overview</h3>
         <p>Durante 2025 me encargué de la comunicación digital de 500 RPM, una fundación que impulsa la transición energética en comunidades rurales. El reto era contar temas técnicos de una forma cercana, que a cualquiera le den ganas de leer.</p>
+        <h3>Qué hice</h3>
         <p>Armaba el calendario de contenido cada mes junto al equipo, escribía los copys y diseñaba los posteos y stories.</p>
-        <p>Mi apuesta fue darle una vuelta a las Stories: dejaron de ser solo informativas y se volvieron un espacio para aprender y participar, con trivias y preguntas. <strong>La comunidad respondió, y la cuenta ganó interacción y alcance.</strong></p>
-        <ul class="chips">
-          <li>Calendario mensual</li><li>Copywriting</li><li>Diseño de posteos</li><li>Stories interactivas</li>
-        </ul>
+        <h3>Mi apuesta</h3>
+        <p>Darle una vuelta a las Stories: dejaron de ser solo informativas y se volvieron un espacio para aprender y participar, con trivias y preguntas. <strong>La comunidad respondió, y la cuenta ganó interacción y alcance.</strong></p>
       </div>
-      <!-- Mockup de story con trivia -->
-      <div class="phone" aria-hidden="true">
+
+      <!-- Story interactiva -->
+      <div class="phone">
         <div class="phone__screen">
           <div class="story__bars"><i></i><i></i><i></i></div>
+          <div class="story__head"><span class="avatar"></span>500rpm <small>· 2 h</small></div>
           <p class="story__q">¿Cuál de estas es una energía renovable? 🌱</p>
-          <div class="story__opt">🪨 Carbón</div>
-          <div class="story__opt story__opt--ok">✅ Viento</div>
-          <div class="story__opt">⛽ Gas</div>
-          <p class="story__foot">TRIVIA · 500 RPM</p>
+          <button class="story__opt" data-ok="0">🪨 Carbón</button>
+          <button class="story__opt" data-ok="1">🌬️ Viento</button>
+          <button class="story__opt" data-ok="0">⛽ Gas</button>
+          <p class="story__msg" aria-live="polite">👆 ¡Tocá una opción!</p>
+          <p class="story__foot">así eran las stories que armaba</p>
         </div>
       </div>
     </div>
+
     <!-- ✏️ IMÁGENES: subí a img/ con estos nombres -->
-    <div class="gallery">
-      <div class="slot" data-label="Posteo 500 RPM"><img src="img/500rpm-1.jpg" alt="Posteo para 500 RPM" onerror="this.remove()"></div>
-      <div class="slot" data-label="Story 500 RPM"><img src="img/500rpm-2.jpg" alt="Story para 500 RPM" onerror="this.remove()"></div>
-      <div class="slot" data-label="Calendario de contenidos"><img src="img/500rpm-3.jpg" alt="Calendario de contenidos" onerror="this.remove()"></div>
+    <div class="strip">
+      <figure class="slot-card" data-tilt><span class="tape"></span><div class="slot" data-label="Posteo 500 RPM"><img src="img/500rpm-1.jpg" alt="Posteo para 500 RPM" onerror="this.remove()"></div><figcaption>Posteo</figcaption></figure>
+      <figure class="slot-card" data-tilt><span class="tape"></span><div class="slot" data-label="Story 500 RPM"><img src="img/500rpm-2.jpg" alt="Story para 500 RPM" onerror="this.remove()"></div><figcaption>Story</figcaption></figure>
+      <figure class="slot-card" data-tilt><span class="tape"></span><div class="slot" data-label="Calendario de contenidos"><img src="img/500rpm-3.jpg" alt="Calendario de contenidos" onerror="this.remove()"></div><figcaption>Calendario mensual</figcaption></figure>
     </div>
-  </article>
+  </div>
+</section>
 
-  <!-- ---------- DI CUORE ---------- -->
-  <article class="case">
-    <div class="case__head">
-      <span class="tag">2026 · actualidad</span>
-      <h3>Agencia Di Cuore</h3>
-      <p class="case__role">Community Manager</p>
-    </div>
-    <p class="case__intro">En la agencia llevo varias cuentas a la vez, cada una con su tono: desde colegios hasta una peregrinación y una empresa de mudanzas internacionales. Escribo los copys, publico y cuento el contenido de cada mes para que el equipo y los clientes sepan qué salió.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="slot" data-label="Posteo escuelas"><img src="img/dicuore-escuelas.jpg" alt="Posteo para escuelas" onerror="this.remove()"></div>
-        <h4>Escuelas <small>5 cuentas</small></h4>
-        <p>Copy, publicación y reporte mensual.</p>
-      </div>
-      <div class="card">
-        <div class="slot" data-label="Posteo Esclavas"><img src="img/dicuore-esclavas.jpg" alt="Posteo Peregrinación Esclavas" onerror="this.remove()"></div>
-        <h4>Esclavas <small>Peregrinación</small></h4>
-        <p>Copy, publicación y reporte mensual.</p>
-      </div>
-      <div class="card">
-        <div class="slot" data-label="Posteo mudanzas"><img src="img/dicuore-mudanzas.jpg" alt="Posteo empresa de mudanzas" onerror="this.remove()"></div>
-        <h4>Mudanzas <small>Internacional</small></h4>
-        <p>Copy, publicación y reporte mensual.</p>
-      </div>
-    </div>
-  </article>
+<!-- ---------- DI CUORE (pestañas) ---------- -->
+<section class="section dicuore" id="di-cuore">
+  <div class="dicuore__head">
+    <span class="kicker">03/ · 2026 – actualidad</span>
+    <h2 class="script-title">Agencia Di Cuore</h2>
+    <p>En la agencia llevo varias cuentas a la vez, cada una con su tono. Escribo los copys, publico y cuento el contenido de cada mes para que el equipo y los clientes sepan qué salió.</p>
+  </div>
 
-  <!-- ---------- DISEÑO ---------- -->
-  <article class="case">
-    <div class="case__head">
-      <span class="tag">Freelance</span>
-      <h3>Proyectos de diseño</h3>
-      <p class="case__role">Identidad visual, papelería y posteos</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="slot" data-label="Velas"><img src="img/velas.jpg" alt="Identidad para emprendimiento de velas" onerror="this.remove()"></div>
-        <h4>Velas <small>Rebranding</small></h4>
-        <p>Le di una identidad nueva al emprendimiento de velas de mi hermana: logo, paleta de colores, identidad visual y posteos.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab is-active" data-tab="escuelas" role="tab">🏫 Escuelas</button>
+    <button class="tab" data-tab="esclavas" role="tab">🕊️ Esclavas</button>
+    <button class="tab" data-tab="mudanzas" role="tab">📦 Mudanzas</button>
+  </div>
+
+  <div class="panels">
+    <article class="panel is-active" data-panel="escuelas">
+      <div class="slot" data-label="Posteo escuelas"><img src="img/dicuore-escuelas.jpg" alt="Posteo para escuelas" onerror="this.remove()"></div>
+      <div class="panel__text">
+        <h3>Escuelas <small>5 cuentas</small></h3>
+        <p>Cinco colegios, cada uno con su comunidad: familias, alumnos y docentes. Contenido cercano para contar lo que pasa en el día a día de cada escuela.</p>
+        <ul class="chips"><li>Copywriting</li><li>Publicación</li><li>Reporte mensual</li></ul>
       </div>
-      <div class="card">
-        <div class="slot" data-label="Dra. Nadia Disantis"><img src="img/nadia-disantis.jpg" alt="Papelería para Dra. Nadia Disantis" onerror="this.remove()"></div>
-        <h4>Dra. Nadia Disantis <small>Cirujana plástica</small></h4>
-        <p>Logo creado con IA, tarjeta personal, recetario y carpeta A4.</p>
+    </article>
+    <article class="panel" data-panel="esclavas">
+      <div class="slot" data-label="Posteo Esclavas"><img src="img/dicuore-esclavas.jpg" alt="Posteo Peregrinación Esclavas" onerror="this.remove()"></div>
+      <div class="panel__text">
+        <h3>Esclavas <small>Peregrinación</small></h3>
+        <p>Comunicación de la Peregrinación Esclavas: acompañar a la comunidad antes, durante y después del evento.</p>
+        <ul class="chips"><li>Copywriting</li><li>Publicación</li><li>Reporte mensual</li></ul>
       </div>
-      <div class="card">
-        <div class="slot" data-label="Cine & Argentriunfos"><img src="img/cine-argentriunfos.jpg" alt="Posteos para cuentas de cine y Argentriunfos" onerror="this.remove()"></div>
-        <h4>Cine &amp; Argentriunfos <small>Posteos</small></h4>
-        <p>Diseño de posteos y estética de feed para una cuenta de cine y para Argentriunfos.</p>
+    </article>
+    <article class="panel" data-panel="mudanzas">
+      <div class="slot" data-label="Posteo mudanzas"><img src="img/dicuore-mudanzas.jpg" alt="Posteo empresa de mudanzas" onerror="this.remove()"></div>
+      <div class="panel__text">
+        <h3>Mudanzas <small>Internacional</small></h3>
+        <p>Una empresa de mudanzas internacionales: contenido que transmite confianza a quien está por mudar su vida a otro país.</p>
+        <ul class="chips"><li>Copywriting</li><li>Publicación</li><li>Reporte mensual</li></ul>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
+</section>
+
+<!-- ---------- DISEÑO (tarjetas que se dan vuelta) ---------- -->
+<section class="section design" id="diseno">
+  <span class="kicker center">04/ · Freelance</span>
+  <h2 class="script-title center">Proyectos de diseño</h2>
+  <p class="center muted">Tocá cada tarjeta para ver qué hice ✦</p>
+
+  <div class="flips">
+    <button class="flip">
+      <div class="flip__inner">
+        <div class="flip__front">
+          <div class="slot" data-label="Velas"><img src="img/velas.jpg" alt="Identidad para emprendimiento de velas" onerror="this.remove()"></div>
+          <h3>Velas <small>Rebranding</small></h3>
+        </div>
+        <div class="flip__back">
+          <span class="flip__n">01</span>
+          <h3>Velas</h3>
+          <p>Le di una identidad nueva al emprendimiento de velas de mi hermana.</p>
+          <ul class="chips"><li>Logo</li><li>Paleta</li><li>Identidad visual</li><li>Posteos</li></ul>
+        </div>
+      </div>
+    </button>
+    <button class="flip">
+      <div class="flip__inner">
+        <div class="flip__front">
+          <div class="slot" data-label="Dra. Nadia Disantis"><img src="img/nadia-disantis.jpg" alt="Papelería para Dra. Nadia Disantis" onerror="this.remove()"></div>
+          <h3>Dra. Nadia Disantis <small>Cirujana plástica</small></h3>
+        </div>
+        <div class="flip__back">
+          <span class="flip__n">02</span>
+          <h3>Dra. Nadia Disantis</h3>
+          <p>Identidad y papelería para el consultorio de una cirujana plástica.</p>
+          <ul class="chips"><li>Logo con IA</li><li>Tarjeta</li><li>Recetario</li><li>Carpeta A4</li></ul>
+        </div>
+      </div>
+    </button>
+    <button class="flip">
+      <div class="flip__inner">
+        <div class="flip__front">
+          <div class="slot" data-label="Cine & Argentriunfos"><img src="img/cine-argentriunfos.jpg" alt="Posteos para cine y Argentriunfos" onerror="this.remove()"></div>
+          <h3>Cine &amp; Argentriunfos <small>Posteos</small></h3>
+        </div>
+        <div class="flip__back">
+          <span class="flip__n">03</span>
+          <h3>Cine &amp; Argentriunfos</h3>
+          <p>Diseño de posteos y estética de feed para una cuenta de cine y para Argentriunfos.</p>
+          <ul class="chips"><li>Posteos</li><li>Estética de feed</li></ul>
+        </div>
+      </div>
+    </button>
+  </div>
 </section>
 
 <!-- ================= QUÉ HAGO ================= -->
 <section class="section services" id="servicios">
-  <h2 class="center">Qué hago por tu marca</h2>
+  <h2 class="script-title center">Qué hago por tu marca</h2>
   <div class="services__grid">
-    <div class="service"><span class="ico">📱</span><h4>Gestión de redes</h4><p>Publico y mantengo las cuentas ordenadas, todos los días.</p></div>
-    <div class="service"><span class="ico">✍️</span><h4>Copywriting</h4><p>Textos que suenan a la marca, no a un robot.</p></div>
-    <div class="service"><span class="ico">🎨</span><h4>Diseño</h4><p>Posteos, stories, logos e identidad visual.</p></div>
-    <div class="service"><span class="ico">🗓️</span><h4>Planificación</h4><p>Calendario mensual de contenidos, armado con el equipo.</p></div>
-    <div class="service"><span class="ico">📊</span><h4>Reportes</h4><p>Seguimiento mensual para saber qué funciona.</p></div>
+    <div class="service" data-tilt><span class="ico">📱</span><h4>Gestión de redes</h4><p>Publico y mantengo las cuentas ordenadas, todos los días.</p></div>
+    <div class="service" data-tilt><span class="ico">✍️</span><h4>Copywriting</h4><p>Textos que suenan a la marca, no a un robot.</p></div>
+    <div class="service" data-tilt><span class="ico">🎨</span><h4>Diseño</h4><p>Posteos, stories, logos e identidad visual.</p></div>
+    <div class="service" data-tilt><span class="ico">🗓️</span><h4>Planificación</h4><p>Calendario mensual de contenidos, armado con el equipo.</p></div>
+    <div class="service" data-tilt><span class="ico">📊</span><h4>Reportes</h4><p>Seguimiento mensual para saber qué funciona.</p></div>
   </div>
-
-  <div class="tools">
-    <p class="tools__claim">Planifico. Escribo. Diseño. <span>Mido.</span></p>
-    <ul class="chips chips--big">
-      <li>Canva</li><li>Meta Business Suite</li><li>Google Sheets</li><li>IA para diseño y copy</li><li>Instagram</li><li>LinkedIn</li>
-    </ul>
-  </div>
+  <p class="claim">Planifico. Escribo. Diseño. <span>Mido.</span></p>
 </section>
 
-<!-- ================= CONTACTO ================= -->
-<section class="contact" id="contacto">
-  <div class="blob blob--3"></div>
-  <span class="star s4">★</span><span class="star s5">✦</span>
-  <h2>¡Trabajemos juntos!</h2>
-  <p class="contact__sub">Si tu marca necesita alguien que la haga hablar en redes, hablemos.</p>
-  <!-- Los botones se completan solos con lo que pongas en datos.js -->
-  <div class="contact__links">
-    <a class="btn js-email" href="#">✉️ <span>Mail</span></a>
-    <a class="btn btn--ghost js-instagram" href="#" target="_blank" rel="noopener">📸 <span>Instagram</span></a>
-    <a class="btn btn--ghost js-linkedin" href="#" target="_blank" rel="noopener">💼 <span>LinkedIn</span></a>
-    <a class="btn btn--ghost js-whatsapp" href="#" target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
-    <a class="btn btn--ghost js-cv" href="#" target="_blank" rel="noopener">📄 <span>Mi CV</span></a>
+<!-- ================= CONTACTO (sobre que se abre) ================= -->
+<section class="contact sky" id="contacto">
+  <div class="cloud c1"></div><div class="cloud c3"></div>
+  <h2 class="script-title script-title--light">¡Trabajemos juntos!</h2>
+
+  <div class="envelope" tabindex="0" aria-label="Abrir sobre con mis contactos">
+    <div class="envelope__back"></div>
+    <div class="letter">
+      <p class="letter__hi">Hablemos de tu marca ✦</p>
+      <!-- Los botones se completan solos con lo que pongas en datos.js -->
+      <div class="contact__links">
+        <a class="btn js-email" href="#">✉️ <span>Mail</span></a>
+        <a class="btn btn--ghost js-instagram" href="#" target="_blank" rel="noopener">📸 <span>Instagram</span></a>
+        <a class="btn btn--ghost js-linkedin" href="#" target="_blank" rel="noopener">💼 <span>LinkedIn</span></a>
+        <a class="btn btn--ghost js-whatsapp" href="#" target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
+        <a class="btn btn--ghost js-cv" href="#" target="_blank" rel="noopener">📄 <span>Mi CV</span></a>
+      </div>
+      <p class="letter__sign">— Jorgelina ✦</p>
+    </div>
+    <div class="envelope__front"></div>
+    <div class="envelope__flap"></div>
+    <div class="seal">J</div>
   </div>
+  <p class="envelope__hint">tocá el sobre para abrirlo</p>
   <p class="signature">gracias por tu tiempo ✦</p>
 </section>
 
