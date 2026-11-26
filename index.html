@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -76,8 +76,10 @@
     <li><a href="#sobre-mi"><span>01/</span> Sobre mí</a></li>
     <li><a href="#caso-500rpm"><span>02/</span> Caso 500 RPM</a></li>
     <li><a href="#di-cuore"><span>03/</span> Agencia Di Cuore</a></li>
-    <li><a href="#diseno"><span>04/</span> Diseño</a></li>
-    <li><a href="#contacto"><span>05/</span> Contacto</a></li>
+    <li><a href="#pettunias"><span>04/</span> Pettunias</a></li>
+    <li><a href="#nadia"><span>05/</span> Dra. Nadia Disanti</a></li>
+    <li><a href="#cine"><span>06/</span> Cine &amp; Argentriunfos</a></li>
+    <li><a href="#contacto"><span>07/</span> Contacto</a></li>
   </ol>
 </section>
 <div class="marquee" aria-label="Roles">
@@ -136,7 +138,7 @@
       <span class="badge"><svg><use href="#star"/></svg> Caso de estudio · 2025</span>
     </header>
 
-    <div class="case__grid">
+    <div class="case__grid case__grid--solo">
       <div class="paper" data-tilt>
         <span class="tape"></span>
         <h3>Overview</h3>
@@ -147,33 +149,105 @@
         <p>Darle una vuelta a las Stories: dejaron de ser solo informativas y se volvieron un espacio para aprender y participar, con trivias y preguntas. <strong>La comunidad respondió, y la cuenta ganó interacción y alcance.</strong></p>
       </div>
 
-      <!-- Story interactiva -->
-      <div class="phone">
-        <div class="phone__screen">
-          <div class="story__bars"><i></i><i></i><i></i></div>
-          <div class="story__head"><span class="avatar"></span>500rpm <small>· 2 h</small></div>
-          <p class="story__q">¿Cuál de estas es una energía renovable? 🌱</p>
-          <button class="story__opt" data-ok="0">🪨 Carbón</button>
-          <button class="story__opt" data-ok="1">🌬️ Viento</button>
-          <button class="story__opt" data-ok="0">⛽ Gas</button>
-          <p class="story__msg" aria-live="polite">👆 ¡Tocá una opción!</p>
-          <p class="story__foot">así eran las stories que armaba</p>
-        </div>
-      </div>
     </div>
 
     <!-- ✏️ IMÁGENES 500 RPM: están en img/500rpm/ -->
-    <p class="swipe-hint">deslizá para ver más · tocá para agrandar →</p>
-    <div class="gallery-strip">
-      <a class="gcard " href="img/500rpm/posteo-juventud.jpg" data-g="500rpm" data-cap="Posteo · Juventud y energía"><span class="tape"></span><img src="img/500rpm/posteo-juventud.jpg" alt="Posteo · Juventud y energía" loading="lazy"><span class="gcard__cap">Posteo · Juventud y energía</span></a>
-      <a class="gcard is-story" href="img/500rpm/story-energias.jpg" data-g="500rpm" data-cap="Story con encuesta"><span class="tape"></span><img src="img/500rpm/story-energias.jpg" alt="Story con encuesta" loading="lazy"><span class="gcard__cap">Story con encuesta</span></a>
-      <a class="gcard " href="img/500rpm/posteo-mujer-rural.jpg" data-g="500rpm" data-cap="Posteo · Día de la Mujer Rural"><span class="tape"></span><img src="img/500rpm/posteo-mujer-rural.jpg" alt="Posteo · Día de la Mujer Rural" loading="lazy"><span class="gcard__cap">Posteo · Día de la Mujer Rural</span></a>
-      <a class="gcard is-story" href="img/500rpm/story-cop.jpg" data-g="500rpm" data-cap="Story trivia · COP"><span class="tape"></span><img src="img/500rpm/story-cop.jpg" alt="Story trivia · COP" loading="lazy"><span class="gcard__cap">Story trivia · COP</span></a>
-      <a class="gcard " href="img/500rpm/posteo-aerogenerador.jpg" data-g="500rpm" data-cap="Posteo · Aerogeneradores"><span class="tape"></span><img src="img/500rpm/posteo-aerogenerador.jpg" alt="Posteo · Aerogeneradores" loading="lazy"><span class="gcard__cap">Posteo · Aerogeneradores</span></a>
-      <a class="gcard is-copy" href="img/500rpm/copy-aerogenerador.png" data-g="500rpm" data-cap="El copy de ese posteo"><span class="tape"></span><img src="img/500rpm/copy-aerogenerador.png" alt="El copy de ese posteo" loading="lazy"><span class="gcard__cap">El copy de ese posteo</span></a>
-      <a class="gcard " href="img/500rpm/carrusel-quienes-somos.jpg" data-g="500rpm" data-cap="Carrusel · ¿Quiénes somos?"><span class="tape"></span><img src="img/500rpm/carrusel-quienes-somos.jpg" alt="Carrusel · ¿Quiénes somos?" loading="lazy"><span class="gcard__cap">Carrusel · ¿Quiénes somos?</span></a>
-      <a class="gcard is-story" href="img/500rpm/story-microtuneles.jpg" data-g="500rpm" data-cap="Story · ¿Sabés qué son?"><span class="tape"></span><img src="img/500rpm/story-microtuneles.jpg" alt="Story · ¿Sabés qué son?" loading="lazy"><span class="gcard__cap">Story · ¿Sabés qué son?</span></a>
-      <a class="gcard " href="img/500rpm/posteo-cambio-climatico.jpg" data-g="500rpm" data-cap="Posteo · Día contra el Cambio Climático"><span class="tape"></span><img src="img/500rpm/posteo-cambio-climatico.jpg" alt="Posteo · Día contra el Cambio Climático" loading="lazy"><span class="gcard__cap">Posteo · Día contra el Cambio Climático</span></a>
+    <div class="subtabs" role="tablist" data-group="rpm">
+      <button class="subtab is-active" data-sub="stories">📱 Stories</button>
+      <button class="subtab" data-sub="posteos">🖼️ Posteos</button>
+      <button class="subtab" data-sub="copys">✍️ Copys</button>
+    </div>
+
+    <div class="subpanels" data-group="rpm">
+      <!-- STORIES: celular que reproduce las stories -->
+      <div class="subpanel is-active" data-sub="stories">
+        <div class="split">
+          <div class="split__text paper paper--flat">
+            <span class="tape"></span>
+            <h3>Stories para participar</h3>
+            <p>Encuestas, trivias y preguntas para que la comunidad no solo mire, sino que responda. Así temas técnicos como los microtúneles o la COP se volvieron conversación.</p>
+            <ul class="chips"><li>Encuestas</li><li>Trivias</li><li>Contenido educativo</li></ul>
+            <p class="handnote">tocá el celu para pasar de story ✦</p>
+          </div>
+          <div class="iphone">
+            <div class="iphone__screen storyplayer" tabindex="0" aria-label="Stories de 500 RPM, tocá para pasar">
+              <div class="storyplayer__bars"></div>
+              <div class="storyplayer__head"><img src="img/500rpm/avatar.png" alt=""> 500rpm_eolica <small>· 3 h</small></div>
+              <img class="storyplayer__img" src="img/500rpm/story-energias.jpg" alt="Story de 500 RPM">
+              <div class="storyplayer__data" hidden>
+                <i data-src="img/500rpm/story-energias.jpg" data-alt="Story con encuesta sobre energías renovables"></i>
+                <i data-src="img/500rpm/story-microtuneles.jpg" data-alt="Story: ¿Sabés qué son los microtúneles?"></i>
+                <i data-src="img/500rpm/story-cop.jpg" data-alt="Story trivia: ¿Sabés qué significan las siglas COP?"></i>
+              </div>
+              <button class="storyplayer__nav storyplayer__prev" aria-label="Story anterior"></button>
+              <button class="storyplayer__nav storyplayer__next" aria-label="Story siguiente"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POSTEOS: perfil de Instagram -->
+      <div class="subpanel" data-sub="posteos">
+        <div class="igprofile">
+          <div class="igprofile__head">
+            <img class="igprofile__avatar" src="img/500rpm/avatar.png" alt="Logo 500 RPM">
+            <div>
+              <p class="igprofile__user">500rpm_eolica</p>
+              <p class="igprofile__bio">Fundación 500 RPM · Energías renovables para comunidades rurales 🌱</p>
+            </div>
+          </div>
+          <div class="iggrid">
+            <a class="igtile" href="img/500rpm/posteo-juventud.jpg" data-g="rpm-posts" data-cap="Posteo · La juventud, motor de la energía renovable"><img src="img/500rpm/posteo-juventud.jpg" alt="Posteo juventud y energía" loading="lazy"></a>
+            <a class="igtile" href="img/500rpm/posteo-mujer-rural.jpg" data-g="rpm-posts" data-cap="Posteo · Día de la Mujer Rural"><img src="img/500rpm/posteo-mujer-rural.jpg" alt="Posteo Día de la Mujer Rural" loading="lazy"></a>
+            <a class="igtile igtile--multi" href="img/500rpm/carrusel-1.jpg" data-g="rpm-carrusel" data-cap="Carrusel ¿Quiénes somos?"><img src="img/500rpm/carrusel-1.jpg" alt="Carrusel ¿Quiénes somos?" loading="lazy"></a>
+            <a class="igtile" href="img/500rpm/posteo-aerogenerador.jpg" data-g="rpm-posts" data-cap="Posteo · Cada aerogenerador, un cambio real"><img src="img/500rpm/posteo-aerogenerador.jpg" alt="Posteo aerogeneradores" loading="lazy"></a>
+            <a class="igtile" href="img/500rpm/posteo-cambio-climatico.jpg" data-g="rpm-posts" data-cap="Posteo · Día contra el Cambio Climático"><img src="img/500rpm/posteo-cambio-climatico.jpg" alt="Posteo Día contra el Cambio Climático" loading="lazy"></a>
+            <a class="igtile" href="img/500rpm/posteo-cambio-energetico.jpg" data-g="rpm-posts" data-cap="Posteo · El cambio energético se construye con aprendizaje"><img src="img/500rpm/posteo-cambio-energetico.jpg" alt="Posteo cambio energético" loading="lazy"></a>
+            <a hidden href="img/500rpm/carrusel-2.jpg" data-g="rpm-carrusel" data-cap="Carrusel ¿Quiénes somos?"></a>
+            <a hidden href="img/500rpm/carrusel-3.jpg" data-g="rpm-carrusel" data-cap="Carrusel ¿Quiénes somos?"></a>
+            <a hidden href="img/500rpm/carrusel-4.jpg" data-g="rpm-carrusel" data-cap="Carrusel ¿Quiénes somos?"></a>
+            <a hidden href="img/500rpm/carrusel-5.jpg" data-g="rpm-carrusel" data-cap="Carrusel ¿Quiénes somos?"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COPYS: posteo con su texto -->
+      <div class="subpanel" data-sub="copys">
+        <div class="copypick" role="tablist">
+          <button class="copypick__btn is-active" data-copy="0">🌬️ Aerogeneradores</button>
+          <button class="copypick__btn" data-copy="1">🌎 Cambio climático</button>
+          <button class="copypick__btn" data-copy="2">👩‍🌾 Mujer rural</button>
+        </div>
+        <div class="igpost">
+          <div class="igpost__media"><img src="img/500rpm/posteo-aerogenerador.jpg" alt="Posteo aerogeneradores"></div>
+          <div class="igpost__side">
+            <div class="igpost__head"><img src="img/500rpm/avatar.png" alt=""><b>500rpm_eolica</b><span>· Seguir</span></div>
+            <div class="igpost__caption">
+              <div class="igcopy is-active" data-img="img/500rpm/posteo-aerogenerador.jpg">
+                <p><b>500rpm_eolica</b> ⚙️ Detrás de cada aerogenerador hay un equipo que comparte conocimiento, compromiso y la convicción de que la energía puede transformar realidades. Cada proyecto terminado demuestra la fuerza del trabajo colectivo: docentes, estudiantes y capacitadores uniendo saberes y esfuerzo para fabricar e instalar un nuevo aerogenerador, con el objetivo último de generar un impacto que sea sustentable 💜.</p>
+                <p>💡 Cuando la educación técnica se conecta con las energías renovables, no solo se generan aerogeneradores, también aprendizajes, oportunidades y un camino más sostenible para el futuro 🌏</p>
+                <p>Seguimos acompañando a las escuelas técnicas que impulsan la transición energética justa en sus territorios.</p>
+                <p class="tags">#EducaciónTécnica #EnergíasRenovables #500RPM</p>
+              </div>
+              <div class="igcopy" data-img="img/500rpm/posteo-cambio-climatico.jpg">
+                <p><b>500rpm_eolica</b> 🌎 24 de octubre | Día contra el Cambio Climático<br>El cambio climático no es un proceso natural. Es el resultado de cómo producimos y consumimos energía.</p>
+                <p>🌎 Sus impactos ya se sienten en nuestras comunidades y en el ambiente que habitamos.</p>
+                <p>⚡ Por eso, trabajamos por una Transición Energética Justa a través de:<br>✓ energías renovables accesibles;<br>✓ formación técnica;<br>✓ proyectos comunitarios.</p>
+                <p>Así, fortalecemos la resiliencia frente al cambio climático y acompañamos a cada territorio en el cuidado de sus recursos.</p>
+                <p class="tags">#DíaContraElCambioClimático #AcciónClimática #TransiciónEnergética #500RPM</p>
+              </div>
+              <div class="igcopy" data-img="img/500rpm/posteo-mujer-rural.jpg">
+                <p><b>500rpm_eolica</b> 15 de octubre | Día de la Mujer Rural. Las mujeres rurales son pilares de la vida en el campo: sostienen la producción de alimentos, resguardan la biodiversidad y transmiten conocimientos que fortalecen la resiliencia de sus comunidades 🌿.</p>
+                <p>En Fundación 500RPM creemos que la transición energética justa también se construye con su liderazgo. Por eso, trabajamos para que estudiantes, productoras y docentes tengan más oportunidades de formación y desarrollo en sus territorios.</p>
+                <p>💡 Hoy celebramos su rol como guardianas de la naturaleza y agentes de cambio hacia un futuro sostenible e inclusivo.</p>
+                <p class="tags">#DíaDeLaMujerRural #TransiciónEnergética #500RPM</p>
+              </div>
+            </div>
+            <div class="igpost__actions"><button class="like" aria-label="Me gusta">♡</button><span>💬</span><span>➤</span><span class="save">🔖</span></div>
+            <p class="igpost__likes">copy escrito por mí ✦</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -219,64 +293,138 @@
   </div>
 </section>
 
-<!-- ---------- DISEÑO (tarjetas que se dan vuelta) ---------- -->
-<section class="section design" id="diseno">
-  <span class="kicker center">04/ · Freelance</span>
-  <h2 class="script-title center">Proyectos de diseño</h2>
-  <p class="center muted">Tocá cada tarjeta para ver qué hice, y las miniaturas para ver los trabajos ✦</p>
+<!-- ---------- PETTUNIAS ---------- -->
+<section class="brand brand--pettunias" id="pettunias">
+  <div class="brand__wrap">
+    <header class="brand__head">
+      <span class="kicker">04/ · Freelance · Identidad y redes</span>
+      <h2 class="script-title">Pettunias</h2>
+      <p>El emprendimiento de velas de soja y home sprays de mi hermana. Le armé una identidad nueva: etiquetas con paleta por fragancia, posteos, carruseles y reels.</p>
+      <ul class="chips"><li>Identidad visual</li><li>Etiquetas</li><li>Posteos</li><li>Reels</li></ul>
+    </header>
 
-  <div class="flips">
-    <div class="flip-wrap">
-    <button class="flip" aria-label="Dar vuelta la tarjeta">
-      <div class="flip__inner">
-        <div class="flip__front">
-          <div class="slot"><img src="img/pettunias/post-vela.jpg" alt="Posteo de Pettunias, velas de soja"></div>
-          <h3>Pettunias <small>Velas y home sprays</small></h3>
-        </div>
-        <div class="flip__back">
-          <span class="flip__n">01</span>
-          <h3>Pettunias</h3>
-          <p>Le di una identidad nueva al emprendimiento de velas de soja y home sprays de mi hermana: etiquetas, posteos, carruseles y reels.</p>
-          <ul class="chips"><li>Identidad visual</li><li>Etiquetas</li><li>Posteos</li><li>Reels</li></ul>
+    <div class="subtabs subtabs--warm" role="tablist" data-group="pet">
+      <button class="subtab is-active" data-sub="etiquetas">🕯️ Etiquetas</button>
+      <button class="subtab" data-sub="posteos">🖼️ Posteos y reel</button>
+    </div>
+
+    <div class="subpanels" data-group="pet">
+      <!-- ETIQUETAS en mockups -->
+      <div class="subpanel is-active" data-sub="etiquetas">
+        <div class="mockups">
+          <figure class="mock">
+            <div class="candle" data-mock="vela">
+              <div class="candle__flame"></div><div class="candle__wick"></div>
+              <div class="candle__glass">
+                <div class="candle__wax"></div>
+                <img class="candle__label mock__label" src="img/pettunias/etiqueta-vela-naranja-pimienta.jpg" alt="Etiqueta de vela Naranja Pimienta">
+              </div>
+            </div>
+            <figcaption>
+              <h3>Velas de soja <small>200 g</small></h3>
+              <div class="swatches" data-for="vela">
+                <button style="--c:#7d5762" data-src="img/pettunias/etiqueta-vela-chocolate.jpg" aria-label="Chocolate"><span>Chocolate</span></button>
+                <button style="--c:#c98d78" data-src="img/pettunias/etiqueta-vela-arandano.jpg" aria-label="Arándano"><span>Arándano</span></button>
+                <button style="--c:#cdb69c" data-src="img/pettunias/etiqueta-vela-sandalo.jpg" aria-label="Sándalo"><span>Sándalo</span></button>
+                <button style="--c:#dbb6ae" data-src="img/pettunias/etiqueta-vela-rosa-vibrante.jpg" aria-label="Rosa Vibrante"><span>Rosa Vibrante</span></button>
+                <button class="is-active" style="--c:#a7b49b" data-src="img/pettunias/etiqueta-vela-naranja-pimienta.jpg" aria-label="Naranja Pimienta"><span>Naranja Pimienta</span></button>
+              </div>
+              <p class="handnote">elegí una fragancia ✦</p>
+            </figcaption>
+          </figure>
+
+          <figure class="mock">
+            <div class="spray" data-mock="spray">
+              <div class="spray__pump"></div><div class="spray__neck"></div>
+              <div class="spray__bottle">
+                <img class="spray__label mock__label" src="img/pettunias/etiqueta-spray-peonia.jpg" alt="Etiqueta de home spray Peonía">
+              </div>
+            </div>
+            <figcaption>
+              <h3>Home sprays <small>180 ml</small></h3>
+              <div class="swatches" data-for="spray">
+                <button class="is-active" style="--c:#dcb8b0" data-src="img/pettunias/etiqueta-spray-peonia.jpg" aria-label="Peonía"><span>Peonía</span></button>
+                <button style="--c:#d9b4ab" data-src="img/pettunias/etiqueta-spray-jazmin-rosa.jpg" aria-label="Jazmín Rosa"><span>Jazmín Rosa</span></button>
+                <button style="--c:#a7b49b" data-src="img/pettunias/etiqueta-spray-naranja-pimienta.jpg" aria-label="Naranja Pimienta"><span>Naranja Pimienta</span></button>
+                <button style="--c:#9fae95" data-src="img/pettunias/etiqueta-spray-cher.jpg" aria-label="Cher"><span>Cher</span></button>
+              </div>
+              <a class="linkbtn" href="img/pettunias/etiqueta-spray-peonia-completa.jpg" data-g="spray-flat" data-cap="Etiqueta completa · Peonía">ver etiquetas completas →</a>
+              <a hidden href="img/pettunias/etiqueta-spray-jazmin-rosa-completa.jpg" data-g="spray-flat" data-cap="Etiqueta completa · Jazmín Rosa"></a>
+              <a hidden href="img/pettunias/etiqueta-spray-naranja-pimienta-completa.jpg" data-g="spray-flat" data-cap="Etiqueta completa · Naranja Pimienta"></a>
+              <a hidden href="img/pettunias/etiqueta-spray-cher-completa.jpg" data-g="spray-flat" data-cap="Etiqueta completa · Cher"></a>
+            </figcaption>
+          </figure>
         </div>
       </div>
-    </button>
-    <div class="thumbs"><a class="thumb" href="img/pettunias/post-vela.jpg" data-g="pettunias" data-cap="Posteo · Vela Naranja Pimienta"><img src="img/pettunias/post-vela.jpg" alt="Posteo · Vela Naranja Pimienta" loading="lazy"></a><a class="thumb thumb--video" href="img/pettunias/reel.mp4" data-g="pettunias" data-cap="Reel · Cómo hacemos una vela" data-video="1"><img src="img/pettunias/reel-poster.jpg" alt="Reel · Cómo hacemos una vela" loading="lazy"></a><a class="thumb" href="img/pettunias/lanzamiento-home-sprays.jpg" data-g="pettunias" data-cap="Posteo · Lanzamiento Home Sprays"><img src="img/pettunias/lanzamiento-home-sprays.jpg" alt="Posteo · Lanzamiento Home Sprays" loading="lazy"></a><a class="thumb" href="img/pettunias/carrusel.jpg" data-g="pettunias" data-cap="Carrusel · Un aroma para cada momento"><img src="img/pettunias/carrusel.jpg" alt="Carrusel · Un aroma para cada momento" loading="lazy"></a><a class="thumb" href="img/pettunias/post-productos.jpg" data-g="pettunias" data-cap="Posteo · Productos"><img src="img/pettunias/post-productos.jpg" alt="Posteo · Productos" loading="lazy"></a><a class="thumb" href="img/pettunias/etiquetas-velas.jpg" data-g="pettunias" data-cap="Etiquetas de velas de soja"><img src="img/pettunias/etiquetas-velas.jpg" alt="Etiquetas de velas de soja" loading="lazy"></a><a class="thumb" href="img/pettunias/etiquetas-home-sprays.jpg" data-g="pettunias" data-cap="Etiquetas de home sprays"><img src="img/pettunias/etiquetas-home-sprays.jpg" alt="Etiquetas de home sprays" loading="lazy"></a></div>
-    </div>
-    <div class="flip-wrap">
-    <button class="flip" aria-label="Dar vuelta la tarjeta">
-      <div class="flip__inner">
-        <div class="flip__front">
-          <div class="slot slot--soft"><img src="img/nadia/tarjeta.jpg" alt="Tarjeta de presentación de Nadia Disanti"></div>
-          <h3>Dra. Nadia Disanti <small>Cirujana plástica</small></h3>
-        </div>
-        <div class="flip__back">
-          <span class="flip__n">02</span>
-          <h3>Dra. Nadia Disanti</h3>
-          <p>Identidad y papelería para el consultorio de una cirujana plástica.</p>
-          <ul class="chips"><li>Logo con IA</li><li>Tarjeta</li><li>Recetario</li><li>Carpeta A4</li></ul>
-        </div>
-      </div>
-    </button>
-    <div class="thumbs"><a class="thumb" href="img/nadia/tarjeta.jpg" data-g="nadia" data-cap="Tarjeta de presentación (frente y dorso)"><img src="img/nadia/tarjeta.jpg" alt="Tarjeta de presentación (frente y dorso)" loading="lazy"></a><a class="thumb" href="img/nadia/recetario.jpg" data-g="nadia" data-cap="Recetario"><img src="img/nadia/recetario.jpg" alt="Recetario" loading="lazy"></a><a class="thumb" href="img/nadia/carpeta.jpg" data-g="nadia" data-cap="Carpeta institucional A4"><img src="img/nadia/carpeta.jpg" alt="Carpeta institucional A4" loading="lazy"></a></div>
-    </div>
-    <div class="flip-wrap">
-    <button class="flip" aria-label="Dar vuelta la tarjeta">
-      <div class="flip__inner">
-        <div class="flip__front">
-          <div class="slot"><img src="img/cine/emmy-portada.jpg" alt="Posteo de Argentriunfos sobre el Emmy de División Palermo"></div>
-          <h3>Cine &amp; Argentriunfos <small>Posteos</small></h3>
-        </div>
-        <div class="flip__back">
-          <span class="flip__n">03</span>
-          <h3>Cine &amp; Argentriunfos</h3>
-          <p>Diseño de posteos y estética de feed para Opinando a Primera Vista (cine y series) y para Argentriunfos.</p>
-          <ul class="chips"><li>Posteos</li><li>Estética de feed</li></ul>
+
+      <!-- POSTEOS en perfil de Instagram -->
+      <div class="subpanel" data-sub="posteos">
+        <div class="igprofile igprofile--warm">
+          <div class="igprofile__head">
+            <span class="igprofile__avatar igprofile__avatar--p">P</span>
+            <div>
+              <p class="igprofile__user">velas_pettunias</p>
+              <p class="igprofile__bio">Velas de soja y home sprays · Posadas, Misiones 🕯️</p>
+            </div>
+          </div>
+          <div class="iggrid">
+            <a class="igtile" href="img/pettunias/post-vela.jpg" data-g="pet-posts" data-cap="Posteo · Lo que define un espacio es su aroma"><img src="img/pettunias/post-vela.jpg" alt="Posteo vela Naranja Pimienta" loading="lazy"></a>
+            <a class="igtile igtile--reel" href="img/pettunias/reel.mp4" data-g="pet-reel" data-video="1" data-cap="Reel · Día de producción"><img src="img/pettunias/reel-poster.jpg" alt="Reel de Pettunias" loading="lazy"></a>
+            <a class="igtile igtile--multi" href="img/pettunias/carrusel-1.jpg" data-g="pet-carrusel" data-cap="Carrusel · Un aroma para cada momento"><img src="img/pettunias/carrusel-1.jpg" alt="Carrusel Pettunias" loading="lazy"></a>
+            <a class="igtile" href="img/pettunias/lanzamiento-home-sprays.jpg" data-g="pet-posts" data-cap="Posteo · Lanzamiento Home Sprays"><img src="img/pettunias/lanzamiento-home-sprays.jpg" alt="Posteo lanzamiento home sprays" loading="lazy"></a>
+            <a class="igtile" href="img/pettunias/post-productos.jpg" data-g="pet-posts" data-cap="Posteo · Mil formas de estar con vos"><img src="img/pettunias/post-productos.jpg" alt="Posteo productos Pettunias" loading="lazy"></a>
+            <a class="igtile" href="img/pettunias/post-regalo.jpg" data-g="pet-posts" data-cap="Posteo · ¿Querés regalar(te) un momento de calma?"><img src="img/pettunias/post-regalo.jpg" alt="Posteo regalo Pettunias" loading="lazy"></a>
+            <a hidden href="img/pettunias/carrusel-2.jpg" data-g="pet-carrusel" data-cap="Carrusel · ¿Te sentís motivada?"></a>
+            <a hidden href="img/pettunias/carrusel-3.jpg" data-g="pet-carrusel" data-cap="Carrusel · ¿El estrés no te deja pensar?"></a>
+            <a hidden href="img/pettunias/carrusel-4.jpg" data-g="pet-carrusel" data-cap="Carrusel · ¿Tuviste un mal día?"></a>
+          </div>
         </div>
       </div>
-    </button>
-    <div class="thumbs"><a class="thumb" href="img/cine/opinando-marvel.jpg" data-g="cine" data-cap="Opinando a Primera Vista · Marvel"><img src="img/cine/opinando-marvel.jpg" alt="Opinando a Primera Vista · Marvel" loading="lazy"></a><a class="thumb" href="img/cine/emmy-portada.jpg" data-g="cine" data-cap="Argentriunfos · Emmy a División Palermo"><img src="img/cine/emmy-portada.jpg" alt="Argentriunfos · Emmy a División Palermo" loading="lazy"></a><a class="thumb" href="img/cine/emmy-nota.jpg" data-g="cine" data-cap="Argentriunfos · La ficción argentina hace historia"><img src="img/cine/emmy-nota.jpg" alt="Argentriunfos · La ficción argentina hace historia" loading="lazy"></a></div>
     </div>
+  </div>
+</section>
+
+<!-- ---------- NADIA DISANTI ---------- -->
+<section class="brand brand--nadia" id="nadia">
+  <div class="brand__wrap">
+    <header class="brand__head">
+      <span class="kicker">05/ · Freelance · Papelería</span>
+      <h2 class="script-title">Dra. Nadia Disanti</h2>
+      <p>Identidad y papelería para el consultorio de una cirujana plástica: logo hecho con IA, tarjeta, recetario y carpeta A4, con los colores y el estilo que me pidió.</p>
+      <ul class="chips"><li>Logo con IA</li><li>Tarjeta</li><li>Recetario</li><li>Carpeta A4</li></ul>
+    </header>
+
+    <div class="desk">
+      <figure class="desk__item desk__folder">
+        <a href="img/nadia/carpeta.jpg" data-g="nadia" data-cap="Carpeta institucional A4 (abierta)"><img src="img/nadia/carpeta.jpg" alt="Carpeta institucional A4" loading="lazy"></a>
+        <figcaption>Carpeta A4</figcaption>
+      </figure>
+      <figure class="desk__item desk__pad">
+        <a class="pad" href="img/nadia/recetario.jpg" data-g="nadia" data-cap="Recetario"><img src="img/nadia/recetario.jpg" alt="Recetario" loading="lazy"></a>
+        <figcaption>Recetario</figcaption>
+      </figure>
+      <figure class="desk__item desk__card">
+        <button class="bizcard" aria-label="Dar vuelta la tarjeta">
+          <span class="bizcard__inner">
+            <img class="bizcard__front" src="img/nadia/tarjeta-1.jpg" alt="Tarjeta de presentación, frente">
+            <img class="bizcard__back" src="img/nadia/tarjeta-2.jpg" alt="Tarjeta de presentación, dorso">
+          </span>
+        </button>
+        <figcaption>Tarjeta 9×5 <span class="handnote">tocala para darla vuelta ↻</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- CINE & ARGENTRIUNFOS ---------- -->
+<section class="section design" id="cine">
+  <span class="kicker center">06/ · Diseño de posteos</span>
+  <h2 class="script-title center">Cine &amp; Argentriunfos</h2>
+  <p class="center muted">Posteos y estética de feed para Opinando a Primera Vista (cine y series) y para Argentriunfos, una cuenta que recién arranca. Tocá para agrandar ✦</p>
+  <div class="feedrow">
+    <a class="feedcard" href="img/cine/opinando-marvel.jpg" data-g="cine" data-cap="Opinando a Primera Vista · ¿Abandonaste Marvel tras Endgame?"><span class="feedcard__acc">Opinando a Primera Vista</span><img src="img/cine/opinando-marvel.jpg" alt="Posteo Marvel" loading="lazy"></a>
+    <a class="feedcard" href="img/cine/emmy-portada.jpg" data-g="cine" data-cap="Argentriunfos · División Palermo ganó otro Emmy"><span class="feedcard__acc">Argentriunfos</span><img src="img/cine/emmy-portada.jpg" alt="Posteo Emmy División Palermo" loading="lazy"></a>
+    <a class="feedcard" href="img/cine/emmy-nota.jpg" data-g="cine" data-cap="Argentriunfos · La ficción argentina vuelve a hacer historia"><span class="feedcard__acc">Argentriunfos</span><img src="img/cine/emmy-nota.jpg" alt="Posteo nota Emmy" loading="lazy"></a>
   </div>
 </section>
 
@@ -331,6 +479,6 @@
 </div>
 
 <script src="datos.js"></script>
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
