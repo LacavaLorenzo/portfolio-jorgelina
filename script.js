@@ -37,7 +37,7 @@
       const t = setInterval(() => { b.textContent = (b.dataset.prefix || "") + ++n; if (n >= end) clearInterval(t); }, 90);
     });
   }), { threshold: 0.15 });
-  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .gallery-strip, .tabs, .panels, .flip-wrap, .service, .claim")
+  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .mock, .igprofile, .desk, .feedcard, .service, .claim")
     .forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 80 + "ms"; io.observe(el); });
 
   /* ---------- Inclinación 3D al pasar el mouse ---------- */
@@ -111,6 +111,76 @@
 
   /* ---------- Tarjetas que se dan vuelta ---------- */
   $$(".flip").forEach(f => f.addEventListener("click", () => f.classList.toggle("is-flipped")));
+
+  /* ---------- Sub-pestañas (Stories / Posteos / Copys, Etiquetas / Posteos) ---------- */
+  $$(".subtabs").forEach(tabs => {
+    const panels = document.querySelector('.subpanels[data-group="' + tabs.dataset.group + '"]');
+    $$(".subtab", tabs).forEach(t => t.addEventListener("click", () => {
+      $$(".subtab", tabs).forEach(x => x.classList.toggle("is-active", x === t));
+      $$(":scope > .subpanel", panels).forEach(p => p.classList.toggle("is-active", p.dataset.sub === t.dataset.sub));
+      document.dispatchEvent(new CustomEvent("subtab", { detail: t.dataset.sub }));
+    }));
+  });
+
+  /* ---------- Celular que reproduce las stories ---------- */
+  $$(".storyplayer").forEach(sp => {
+    const items = $$(".storyplayer__data i", sp);
+    const img = sp.querySelector(".storyplayer__img");
+    const bars = sp.querySelector(".storyplayer__bars");
+    bars.innerHTML = items.map(() => "<i><b></b></i>").join("");
+    const bs = $$("i", bars);
+    let n = 0, timer;
+    const go = i => {
+      n = (i + items.length) % items.length;
+      img.style.opacity = 0;
+      setTimeout(() => { img.src = items[n].dataset.src; img.alt = items[n].dataset.alt; img.style.opacity = 1; }, 150);
+      bs.forEach((b, k) => { b.classList.toggle("done", k < n); b.classList.remove("on"); });
+      void bars.offsetWidth;
+      bs[n].classList.add("on");
+      clearTimeout(timer);
+      if (!reduce) timer = setTimeout(() => go(n + 1), 5000);
+    };
+    sp.querySelector(".storyplayer__next").addEventListener("click", () => go(n + 1));
+    sp.querySelector(".storyplayer__prev").addEventListener("click", () => go(n - 1));
+    sp.addEventListener("keydown", e => { if (e.key === "ArrowRight") go(n + 1); if (e.key === "ArrowLeft") go(n - 1); });
+    items.forEach(i => { const p = new Image(); p.src = i.dataset.src; });
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) go(n); else clearTimeout(timer);
+    }), { threshold: .4 }).observe(sp);
+  });
+
+  /* ---------- Copys: cambiar de posteo ---------- */
+  $$(".copypick").forEach(pick => {
+    const post = pick.nextElementSibling;
+    const img = post.querySelector(".igpost__media img");
+    const copies = $$(".igcopy", post);
+    $$(".copypick__btn", pick).forEach(b => b.addEventListener("click", () => {
+      $$(".copypick__btn", pick).forEach(x => x.classList.toggle("is-active", x === b));
+      const c = copies[+b.dataset.copy];
+      copies.forEach(x => x.classList.toggle("is-active", x === c));
+      img.style.opacity = 0;
+      setTimeout(() => { img.src = c.dataset.img; img.style.opacity = 1; }, 150);
+      post.querySelector(".igpost__caption").scrollTop = 0;
+    }));
+    const like = post.querySelector(".like");
+    like.addEventListener("click", () => { like.classList.toggle("is-on"); like.textContent = like.classList.contains("is-on") ? "♥" : "♡"; });
+  });
+
+  /* ---------- Mockups: elegir fragancia ---------- */
+  $$(".swatches").forEach(sw => {
+    const label = document.querySelector('[data-mock="' + sw.dataset.for + '"] .mock__label');
+    $$("button", sw).forEach(b => {
+      const p = new Image(); p.src = b.dataset.src;
+      b.addEventListener("click", () => {
+        $$("button", sw).forEach(x => x.classList.toggle("is-active", x === b));
+        label.style.opacity = 0;
+        setTimeout(() => { label.src = b.dataset.src; label.alt = "Etiqueta " + b.getAttribute("aria-label"); label.style.opacity = 1; }, 150);
+      });
+    });
+  });
+
+  /* ---------- Tarjeta de Nadia que se da vuelta ---------- */
+  $$(".bizcard").forEach(c => c.addEventListener("click", () => c.classList.toggle("is-flipped")));
 
   /* ---------- Visor de trabajos (lightbox) ---------- */
   const lb = document.querySelector(".lightbox");
