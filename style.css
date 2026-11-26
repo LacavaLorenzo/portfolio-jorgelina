@@ -205,6 +205,45 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .flip__n { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 4rem; opacity: .25; line-height: 1; }
 .flip__back .chips li { background: transparent; color: var(--blanco); border-color: rgba(255,255,255,.6); }
 
+/* ---------- Galerías de trabajos ---------- */
+.swipe-hint { font-family: "Caveat"; font-size: 1.35rem; color: var(--azul-oscuro); text-align: right; margin-bottom: .4rem; }
+.gallery-strip { display: flex; gap: 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 1.6rem .6rem 2.2rem; margin: 0 -.6rem; scrollbar-width: thin; scrollbar-color: var(--azul-oscuro) transparent; }
+.gcard { position: relative; flex: 0 0 auto; scroll-snap-align: start; display: flex; flex-direction: column; background: var(--blanco); padding: 10px 10px 6px; box-shadow: var(--sombra); text-decoration: none; transition: transform .3s; }
+.gcard:nth-child(odd) { transform: rotate(-1.5deg); } .gcard:nth-child(even) { transform: rotate(1.5deg); }
+.gcard:hover { transform: rotate(0) translateY(-6px); }
+.gcard img { height: 380px; width: auto; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: 3px; background: var(--fondo-2); }
+.gcard.is-story img { aspect-ratio: 9/16; }
+.gcard.is-copy img { aspect-ratio: 475/327; object-fit: contain; background: #fff; }
+.gcard .tape { top: -12px; width: 80px; height: 24px; }
+.gcard__cap { font-family: "Caveat"; font-size: 1.25rem; color: var(--azul-oscuro); text-align: center; padding-top: .3rem; width: 0; min-width: 100%; line-height: 1.15; }
+
+.copies { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .9rem; }
+.copy { display: block; background: #fff; border-radius: 14px; padding: .7rem; box-shadow: 0 6px 16px rgba(20,33,91,.1); transition: transform .25s; }
+.copy:nth-child(odd) { transform: rotate(-1deg); } .copy:nth-child(even) { transform: rotate(1deg); }
+.copy:hover { transform: scale(1.03); }
+.copy img { width: 100%; height: 170px; object-fit: cover; object-position: top; display: block; }
+.copies:has(.copy:only-child) .copy img { height: auto; }
+.panel--text { grid-template-columns: 1fr; max-width: 760px; }
+
+.flip-wrap { min-width: 0; display: flex; flex-direction: column; gap: .9rem; }
+.slot--soft img { object-fit: contain; background: #efe9e3; }
+.thumbs { display: flex; gap: .5rem; overflow-x: auto; padding: .2rem .1rem .4rem; scrollbar-width: thin; }
+.thumb { position: relative; flex: 0 0 64px; height: 64px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(20,33,91,.15); border: 2px solid var(--blanco); transition: transform .2s; }
+.thumb:hover { transform: translateY(-3px) rotate(-3deg); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb--video::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 1.1rem; background: rgba(20,33,91,.35); }
+
+/* ---------- Visor (lightbox) ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 300; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .5rem; padding: 1rem; background: rgba(12,20,60,.88); backdrop-filter: blur(6px); }
+.lightbox[hidden] { display: none; }
+.lightbox__fig { display: flex; flex-direction: column; align-items: center; gap: .8rem; min-width: 0; }
+.lightbox__media img, .lightbox__media video { display: block; max-width: 100%; max-height: calc(100vh - 6.5rem); border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.4); background: #fff; }
+.lightbox__cap { font-family: "Caveat"; font-size: 1.5rem; color: #fff; text-align: center; }
+.lightbox__close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--azul-oscuro); font-size: 1.1rem; font-weight: 700; z-index: 2; display: grid; place-items: center; }
+.lightbox__nav { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.9); color: var(--azul-oscuro); font-size: 2rem; line-height: 1; display: grid; place-items: center; padding: 0 0 .2rem; }
+.lightbox__nav[hidden] { visibility: hidden; }
+body.no-scroll { overflow: hidden; }
+
 /* ---------- Servicios ---------- */
 .services__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .service { background: var(--blanco); border-radius: var(--radio); padding: 1.5rem 1.1rem; text-align: center; box-shadow: var(--sombra); transition: transform .3s ease-out, background .3s; }
@@ -250,7 +289,12 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
   .scrap { grid-template-columns: 1fr 1fr; grid-template-areas: "foto foto" "texto texto" "roles count" "tools tools"; }
   .polaroid { max-width: 320px; justify-self: center; width: 100%; }
   .case__grid, .panel { grid-template-columns: 1fr; gap: 2.5rem; }
-  .strip { grid-template-columns: 1fr 1fr 1fr; gap: .8rem; }
+  .gcard img { height: 300px; }
+  .gallery-strip { gap: 1.1rem; }
+  .lightbox { grid-template-columns: 1fr; padding: .6rem; }
+  .lightbox__nav { position: absolute; bottom: 1rem; z-index: 2; }
+  .lightbox__prev { left: 1rem; } .lightbox__next { right: 1rem; }
+  .lightbox__media img, .lightbox__media video { max-height: calc(100vh - 9rem); }
   .slot-card figcaption { font-size: 1rem; }
   .flips { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
