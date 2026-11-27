@@ -339,8 +339,10 @@
     $$("[data-g]").forEach(a => a.addEventListener("click", e => {
       e.preventDefault(); e.stopPropagation();
       lastFocus = a;
-      list = $$('[data-g="' + a.dataset.g + '"]');
-      show(list.indexOf(a));
+      list = $$('[data-g="' + a.dataset.g + '"]').filter(x => !x.closest('[aria-hidden="true"]'));
+      let i = list.indexOf(a);
+      if (i < 0) i = Math.max(0, list.findIndex(x => x.getAttribute("href") === a.getAttribute("href")));
+      show(i);
       lb.hidden = false; document.body.classList.add("no-scroll");
       lb.querySelector(".lightbox__close").focus();
     }));
