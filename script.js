@@ -37,7 +37,7 @@
       const t = setInterval(() => { b.textContent = (b.dataset.prefix || "") + ++n; if (n >= end) clearInterval(t); }, 90);
     });
   }), { threshold: 0.15 });
-  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .labels, .notion, .planner, .soft, .ecojourney, .service, .claim")
+  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .lblshow, .notion, .planner, .soft, .ecojourney, .service, .claim")
     .forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 80 + "ms"; io.observe(el); });
 
   /* ---------- Inclinación 3D al pasar el mouse ---------- */
@@ -315,6 +315,103 @@
     };
     steps.forEach((s, i) => s.addEventListener("click", () => go(i)));
     $$(".eco-go", j).forEach(b => b.addEventListener("click", () => go(+b.dataset.go)));
+  });
+
+  /* ---------- 500 RPM · Resultados ---------- */
+  $$(".results").forEach(r => {
+    const M = JSON.parse(r.dataset.months);
+    const fmt = n => n.toLocaleString("es-AR");
+    const keys = ["views", "reach", "inter", "visits"];
+    const max = Math.max(...M.map(m => m.views));
+    const bars = $$(".rbar", r), btns = $$(".rmonths button", r);
+    const tiles = keys.map(k => r.querySelector('[data-k="' + k + '"]'));
+    const shot = r.querySelector(".rphone__shot"), empty = r.querySelector(".rphone__empty");
+    const sw = $$(".rphone__switch button", r), cap = r.querySelector(".rphone__cap"), top = r.querySelector(".rtop span");
+    let cur = 2, view = "ring", shown = false;
+    const tween = (el, to) => {
+      const from = +(el.dataset.v || 0), t0 = performance.now();
+      el.dataset.v = to;
+      const step = t => { const p = Math.min(1, (t - t0) / 700), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(Math.round(from + (to - from) * e)); if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    const paintShot = () => {
+      const m = M[cur], src = view === "ring" ? m.shot : m.topshot;
+      sw.forEach(b => b.classList.toggle("is-active", b.dataset.view === view));
+      sw.forEach(b => b.disabled = !m.shot);
+      if (!src) { shot.classList.add("is-off"); empty.classList.remove("is-off"); cap.textContent = "agosto: el punto de partida"; return; }
+      empty.classList.add("is-off");
+      shot.classList.add("is-off");
+      setTimeout(() => { shot.src = src; shot.onload = () => shot.classList.remove("is-off"); if (shot.complete) shot.classList.remove("is-off"); }, 200);
+      cap.textContent = view === "ring" ? "captura real de las estadísticas de " + m.m.toLowerCase() : "lo más visto de " + m.m.toLowerCase();
+    };
+    const set = i => {
+      cur = i; const m = M[i], prev = M[i - 1];
+      btns.forEach((b, j) => b.classList.toggle("is-active", j === i));
+      bars.forEach((b, j) => b.classList.toggle("is-active", j === i));
+      keys.forEach((k, j) => {
+        tween(tiles[j].querySelector("b"), m[k]);
+        const d = prev ? Math.round((m[k] - prev[k]) / prev[k] * 100) : 0;
+        tiles[j].querySelector("i").textContent = d > 0 ? "▲ " + d + "% vs. " + prev.m.toLowerCase() : "";
+      });
+      top.innerHTML = m.top;
+      paintShot();
+    };
+    btns.forEach((b, i) => b.addEventListener("click", () => set(i)));
+    bars.forEach((b, i) => b.addEventListener("click", () => set(i)));
+    sw.forEach(b => b.addEventListener("click", () => { view = b.dataset.view; paintShot(); }));
+    new IntersectionObserver((es, o) => es.forEach(e => {
+      if (!e.isIntersecting || shown) return; shown = true; o.disconnect();
+      bars.forEach((b, i) => b.querySelector("span").style.setProperty("--h", Math.round(M[i].views / max * 100) + "%"));
+      $$("[data-to]", r).forEach(el => {
+        const to = +el.dataset.to, pre = el.dataset.pre || "", suf = el.dataset.suf || "", dec = +(el.dataset.dec || 0), t0 = performance.now();
+        const step = t => { const p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + (to * e).toLocaleString("es-AR", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf; if (p < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step);
+      });
+      set(cur);
+    }), { threshold: .2 }).observe(r);
+  });
+
+  /* ---------- Pettunias · carrusel de etiquetas ---------- */
+  $$(".lblshow").forEach(s => {
+    const car = s.querySelector(".lblcar"), cards = $$(".lblcard", s), dotsBox = s.querySelector(".lbldots");
+    const vis = () => cards.filter(c => !c.hidden);
+    const dots = () => { dotsBox.innerHTML = vis().map(() => "<i></i>").join(""); mark(); };
+    const center = c => c.offsetLeft + c.offsetWidth / 2 - car.clientWidth / 2;
+    const mark = () => {
+      const mid = car.scrollLeft + car.clientWidth / 2; let best = null, bd = 1e9;
+      vis().forEach(c => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = c; } });
+      cards.forEach(c => c.classList.toggle("is-active", c === best));
+      $$("i", dotsBox).forEach((d, i) => d.classList.toggle("is-active", vis()[i] === best));
+      return best;
+    };
+    const go = c => car.scrollTo({ left: center(c), behavior: "smooth" });
+    const step = d => { const v = vis(), i = v.indexOf(mark()); go(v[Math.max(0, Math.min(v.length - 1, i + d))]); };
+    car.addEventListener("scroll", () => requestAnimationFrame(mark), { passive: true });
+    s.querySelector("[data-prev]").addEventListener("click", () => step(-1));
+    s.querySelector("[data-next]").addEventListener("click", () => step(1));
+    car.addEventListener("keydown", e => { if (e.key === "ArrowRight") { e.preventDefault(); step(1); } if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); } });
+    $$(".lblfilter button", s).forEach(b => b.addEventListener("click", () => {
+      $$(".lblfilter button", s).forEach(x => x.classList.toggle("is-active", x === b));
+      cards.forEach(c => c.hidden = b.dataset.f !== "all" && c.dataset.type !== b.dataset.f);
+      dots(); go(vis()[0]);
+    }));
+    $$(".lblpal button", s).forEach(b => b.addEventListener("click", () => {
+      const c = cards.find(x => !x.hidden && x.dataset.hex === b.dataset.hex) || cards.find(x => x.dataset.hex === b.dataset.hex);
+      if (c.hidden) s.querySelector('.lblfilter button[data-f="all"]').click();
+      car.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => go(c), 50);
+    }));
+    // arrastre con mouse (en touch ya es nativo)
+    let down = false, sx = 0, sl = 0, moved = 0;
+    car.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") return; down = true; moved = 0; sx = e.clientX; sl = car.scrollLeft; });
+    window.addEventListener("pointermove", e => { if (!down) return; const dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx)); if (moved > 4) car.classList.add("is-drag"); car.scrollLeft = sl - dx; });
+    window.addEventListener("pointerup", () => { if (!down) return; down = false; if (car.classList.contains("is-drag")) { car.classList.remove("is-drag"); const b = mark(); if (b) go(b); } });
+    car.addEventListener("click", e => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
+    car.addEventListener("dragstart", e => e.preventDefault());
+    dots();
+    const start = cards[0];
+    requestAnimationFrame(() => { car.scrollLeft = center(start); mark(); });
+    window.addEventListener("resize", () => mark());
   });
 
   /* ---------- Visor de trabajos (lightbox) ---------- */
