@@ -609,6 +609,41 @@ button.tag { font: inherit; text-decoration: underline; color: #3a5fe0; cursor: 
 
 .igpost__caption p { margin-bottom: .8rem; }
 
+/* ---------- Galería mezclada (posteos + copys + stories) ---------- */
+.gallery-mix { --H: 440px; padding: 1.4rem 0 2.4rem; }
+.gallery-mix .marquee-copys__track { align-items: flex-start; gap: 1.6rem; }
+.gx { position: relative; flex: none; height: var(--H); display: flex; background: var(--blanco); border-radius: 20px; box-shadow: 0 18px 40px rgba(20,33,91,.18); overflow: hidden; transform: none !important; }
+.gx:nth-child(even) { margin-top: 18px; }
+.gx__media { position: relative; display: block; height: 100%; flex: none; background: #000; }
+.gx__media img { display: block; height: 100%; width: auto; object-fit: cover; pointer-events: none; }
+.gx--post .gx__media img, .gx--pair .gx__media img { aspect-ratio: 4/5; }
+.gx--story { border-radius: 26px; }
+.gx--story .gx__media img { aspect-ratio: 9/16; }
+.gx__bars { position: absolute; z-index: 2; top: 10px; left: 10px; right: 10px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.55); }
+.gx__bars::after { content: ""; position: absolute; inset: 0; width: 40%; background: #fff; border-radius: 3px; }
+.gx__count { position: absolute; z-index: 2; top: 20px; right: 12px; font-style: normal; font-size: .72rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); padding: .15rem .5rem; border-radius: 999px; }
+.gx__media.is-multi::after { content: "❐"; position: absolute; top: 10px; right: 12px; color: #fff; font-size: 1.1rem; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.gx__media::before { content: "🔍"; position: absolute; z-index: 3; inset: 0; display: grid; place-items: center; font-size: 1.6rem; background: rgba(20,33,91,.35); opacity: 0; transition: opacity .3s; }
+.gx__media:hover::before { opacity: 1; }
+.gx__cap { width: 330px; display: flex; flex-direction: column; padding: 1rem 1.1rem .8rem; border-left: 1px solid #eef0f6; }
+.gx__text { flex: 1; overflow-y: auto; font-size: .86rem; line-height: 1.5; padding-right: .3rem; scrollbar-width: thin; }
+.gx__text p + p { margin-top: .55rem; }
+.gx__actions { display: flex; gap: .9rem; padding-top: .6rem; border-top: 1px solid #eef0f6; font-size: 1.1rem; }
+.gx__actions .save { margin-left: auto; }
+.gx--copy { width: 320px; flex-direction: column; padding: 1.1rem 1.2rem; cursor: pointer; }
+.gx--copy .ccard__text { -webkit-line-clamp: 13; }
+.gx__tag { position: absolute; z-index: 4; bottom: 10px; left: 10px; font-family: "Caveat"; font-size: 1.05rem; line-height: 1; color: var(--azul-oscuro); background: rgba(255,255,255,.92); padding: .25rem .6rem .3rem; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12); pointer-events: none; }
+.gx--copy .gx__tag { left: auto; right: 12px; bottom: 12px; background: var(--fondo); }
+.gx--pair .gx__tag { left: 10px; }
+
+/* ---------- Opinando: carrusel infinito ---------- */
+.panorama { position: relative; display: block; overflow: hidden; border-radius: 22px; box-shadow: var(--sombra); margin: 0 0 2rem; background: #8b1d12; }
+.panorama__track { display: flex; width: max-content; animation: pano 60s linear infinite alternate; }
+.panorama:hover .panorama__track { animation-play-state: paused; }
+.panorama img { display: block; height: 320px; width: auto; }
+@keyframes pano { to { transform: translateX(calc(-100% + min(1100px, 100vw - 3rem))); } }
+.panorama__label { position: absolute; z-index: 2; top: 12px; left: 12px; background: rgba(255,255,255,.92); color: var(--azul-oscuro); font-size: .8rem; font-weight: 600; padding: .3rem .8rem; border-radius: 999px; }
+
 /* ---------- Servicios ---------- */
 .services__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .service { background: var(--blanco); border-radius: var(--radio); padding: 1.5rem 1.1rem; text-align: center; box-shadow: var(--sombra); transition: transform .3s ease-out, background .3s; }
@@ -671,6 +706,13 @@ button.tag { font: inherit; text-decoration: underline; color: #3a5fe0; cursor: 
   .brand { padding: 5rem 1.2rem 4rem; }
   .subtab { padding: .5rem .8rem; font-size: .88rem; }
   .ccard { flex-basis: 250px; }
+  .gallery-mix { --H: 290px; }
+  .gx__text { font-size: .74rem; }
+  .gx__cap .ccard__head small { font-size: .62rem; }
+  .gx__cap { width: 170px; padding: .6rem .6rem .5rem; }
+  .gx--copy { width: 260px; }
+  .gx--copy .ccard__text { -webkit-line-clamp: 11; }
+  .panorama img { height: 220px; }
   .planner { padding: 1rem .7rem; }
   .planner__head { display: none; }
   .planner__row { grid-template-columns: 52px 1fr; }
