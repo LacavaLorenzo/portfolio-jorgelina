@@ -37,7 +37,7 @@
       const t = setInterval(() => { b.textContent = (b.dataset.prefix || "") + ++n; if (n >= end) clearInterval(t); }, 90);
     });
   }), { threshold: 0.15 });
-  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .lblshow, .notion, .planner, .soft, .ecojourney, .service, .claim")
+  $$(".script-title, .index__list li, .polaroid, .note, .counter, .paper, .phone, .subtabs, .tabs, .panels, .igprofile, .desk, .feedcard, .pkgshow, .notion, .planner, .soft, .ecojourney, .service, .claim")
     .forEach((el, i) => { el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 80 + "ms"; io.observe(el); });
 
   /* ---------- Inclinación 3D al pasar el mouse ---------- */
@@ -412,6 +412,38 @@
     const start = cards[0];
     requestAnimationFrame(() => { car.scrollLeft = center(start); mark(); });
     window.addEventListener("resize", () => mark());
+  });
+
+  /* ---------- Pettunias · etiquetas aplicadas (cambian solas) ---------- */
+  $$(".pkg").forEach(f => {
+    const items = f.dataset.items.split("|").map(s => s.split(";"));
+    const imgs = $$(".pkg__photo img", f), chips = $$(".pkg__chips button", f);
+    const name = f.querySelector(".pkg__name b"), hex = f.querySelector(".pkg__hex em"), bar = f.querySelector(".pkg__bar i");
+    const T = 4200; let i = 0, timer = null, visible = false, hover = false;
+    imgs.forEach(im => im.loading = "eager");
+    const show = n => {
+      if (n === i) return;
+      i = (n + items.length) % items.length;
+      const [nm, col, x] = items[i];
+      imgs.forEach((im, k) => im.classList.toggle("is-on", k === i));
+      chips.forEach((c, k) => c.classList.toggle("is-on", k === i));
+      f.style.setProperty("--c", x);
+      name.classList.add("is-out"); hex.style.opacity = 0;
+      setTimeout(() => { name.textContent = nm; hex.textContent = col + " · " + x; name.classList.remove("is-out"); hex.style.opacity = 1; }, 600);
+    };
+    const run = () => {
+      clearTimeout(timer); bar.classList.remove("is-run"); void bar.offsetWidth;
+      if (!visible || hover) return;
+      bar.style.setProperty("--t", T + "ms"); bar.classList.add("is-run");
+      timer = setTimeout(() => { show(i + 1); run(); }, T);
+    };
+    chips.forEach((c, k) => c.addEventListener("click", () => { show(k); run(); }));
+    f.addEventListener("mouseenter", () => { hover = true; run(); });
+    f.addEventListener("mouseleave", () => { hover = false; run(); });
+    new IntersectionObserver(es => es.forEach(e => {
+      const was = visible; visible = e.isIntersecting;
+      if (visible && !was) setTimeout(run, +f.dataset.delay || 0); else if (!visible) run();
+    }), { threshold: .3 }).observe(f);
   });
 
   /* ---------- Visor de trabajos (lightbox) ---------- */
