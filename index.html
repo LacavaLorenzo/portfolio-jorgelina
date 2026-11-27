@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -262,26 +262,32 @@
 
     <div class="subpanels" data-group="pet">
       <div class="subpanel is-active" data-sub="etiquetas">
-        <div class="lblshow">
-          <div class="lblshow__intro">
-            <div>
-              <h3>Una etiqueta para cada aroma</h3>
-              <p>Diseñé las etiquetas de las velas de soja y los home sprays de Pettunias: una misma estructura serena, con tipografía serif y mucho aire, y un color propio para cada fragancia.</p>
-              <div class="lblpal"><button data-hex="#7B5560" style="--c:#7B5560" aria-label="Ver la etiqueta Chocolate"><b>Chocolate</b>#7B5560</button><button data-hex="#C9907C" style="--c:#C9907C" aria-label="Ver la etiqueta Arándano"><b>Arándano</b>#C9907C</button><button data-hex="#CEB69E" style="--c:#CEB69E" aria-label="Ver la etiqueta Sándalo"><b>Sándalo</b>#CEB69E</button><button data-hex="#DBB9B0" style="--c:#DBB9B0" aria-label="Ver la etiqueta Rosa"><b>Rosa</b>#DBB9B0</button><button data-hex="#A7B39B" style="--c:#A7B39B" aria-label="Ver la etiqueta Salvia"><b>Salvia</b>#A7B39B</button></div>
-            </div>
-            <div class="lblphotos">
-              <a href="img/pettunias/post-productos.jpg" data-g="pet-fotos" data-cap="Las etiquetas aplicadas: vela, home spray y sales"><img src="img/pettunias/post-productos.jpg" alt="Productos de Pettunias con sus etiquetas" loading="lazy"></a>
-              <a href="img/pettunias/post-vela.jpg" data-g="pet-fotos" data-cap="Vela Naranja Pimienta con su etiqueta"><img src="img/pettunias/post-vela.jpg" alt="Vela con etiqueta" loading="lazy"></a>
-              <a href="img/pettunias/lanzamiento-home-sprays.jpg" data-g="pet-fotos" data-cap="Home spray Jazmín Rosa con su etiqueta"><img src="img/pettunias/lanzamiento-home-sprays.jpg" alt="Home spray con etiqueta" loading="lazy"></a>
-            </div>
+        <div class="pkgshow">
+          <div class="pkgshow__intro">
+            <h3>Un mismo sistema, una personalidad para cada aroma</h3>
+            <p>Las etiquetas comparten estructura, logo y tipografía. Lo que cambia es el color: cada fragancia tiene el suyo. Así se ven aplicadas sobre los envases reales.</p>
           </div>
-          <div class="lblbar">
-            <div class="lblfilter"><button class="is-active" data-f="all">Todas</button><button data-f="vela">🕯️ Velas</button><button data-f="spray">🌸 Home sprays</button></div>
-            <p class="handnote">arrastrá o usá las flechas · tocá una etiqueta para verla grande ✦</p>
-            <div class="lblnav"><button data-prev aria-label="Anterior">←</button><button data-next aria-label="Siguiente">→</button></div>
+          <div class="pkgshow__grid">
+            <figure class="pkg pkg--vela" data-items="Chocolate;ciruela;#7B5560|Arándano;terracota;#C9907C|Sándalo;arena;#CEB69E|Rosa Vibrante;rosa;#DBB9B0|Naranja Pimienta;salvia;#A7B39B" data-delay="0" style="--c:#7B5560">
+              <div class="pkg__photo" style="aspect-ratio:900/850"><img src="img/pettunias/aplicadas/vela-chocolate.jpg" alt="Vela de soja Chocolate con su etiqueta Pettunias" width="900" height="850" class="is-on" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/vela-arandano.jpg" alt="Vela de soja Arándano con su etiqueta Pettunias" width="900" height="850" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/vela-sandalo.jpg" alt="Vela de soja Sándalo con su etiqueta Pettunias" width="900" height="850" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/vela-rosa.jpg" alt="Vela de soja Rosa Vibrante con su etiqueta Pettunias" width="900" height="850" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/vela-salvia.jpg" alt="Vela de soja Naranja Pimienta con su etiqueta Pettunias" width="900" height="850" loading="lazy" draggable="false"><span class="pkg__bar"><i></i></span></div>
+              <figcaption class="pkg__cap">
+                <small>Vela de soja · 200 g</small>
+                <div class="pkg__name"><b>Chocolate</b></div>
+                <span class="pkg__hex"><i></i><em>ciruela · #7B5560</em></span>
+              </figcaption>
+              <div class="pkg__chips"><button style="--c:#7B5560" data-i="0" aria-label="Chocolate" class="is-on"><i></i><span>Chocolate</span></button><button style="--c:#C9907C" data-i="1" aria-label="Arándano"><i></i><span>Arándano</span></button><button style="--c:#CEB69E" data-i="2" aria-label="Sándalo"><i></i><span>Sándalo</span></button><button style="--c:#DBB9B0" data-i="3" aria-label="Rosa Vibrante"><i></i><span>Rosa Vibrante</span></button><button style="--c:#A7B39B" data-i="4" aria-label="Naranja Pimienta"><i></i><span>Naranja Pimienta</span></button></div>
+            </figure>
+            <figure class="pkg pkg--spray" data-items="Peonía;rosa;#DBB9B0|Jazmín Rosa;rosa;#DBB9B0|Naranja Pimienta;salvia;#A7B39B|Cher;salvia;#A7B39B" data-delay="1700" style="--c:#DBB9B0">
+              <div class="pkg__photo" style="aspect-ratio:864/1016"><img src="img/pettunias/aplicadas/spray-peonia.jpg" alt="Home spray Peonía con su etiqueta Pettunias" width="864" height="1016" class="is-on" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/spray-jazmin-rosa.jpg" alt="Home spray Jazmín Rosa con su etiqueta Pettunias" width="864" height="1016" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/spray-naranja-pimienta.jpg" alt="Home spray Naranja Pimienta con su etiqueta Pettunias" width="864" height="1016" loading="lazy" draggable="false"><img src="img/pettunias/aplicadas/spray-cher.jpg" alt="Home spray Cher con su etiqueta Pettunias" width="864" height="1016" loading="lazy" draggable="false"><span class="pkg__bar"><i></i></span></div>
+              <figcaption class="pkg__cap">
+                <small>Home spray · 180 ml</small>
+                <div class="pkg__name"><b>Peonía</b></div>
+                <span class="pkg__hex"><i></i><em>rosa · #DBB9B0</em></span>
+              </figcaption>
+              <div class="pkg__chips"><button style="--c:#DBB9B0" data-i="0" aria-label="Peonía" class="is-on"><i></i><span>Peonía</span></button><button style="--c:#DBB9B0" data-i="1" aria-label="Jazmín Rosa"><i></i><span>Jazmín Rosa</span></button><button style="--c:#A7B39B" data-i="2" aria-label="Naranja Pimienta"><i></i><span>Naranja Pimienta</span></button><button style="--c:#A7B39B" data-i="3" aria-label="Cher"><i></i><span>Cher</span></button></div>
+            </figure>
           </div>
-          <div class="lblcar" tabindex="0" aria-label="Carrusel de etiquetas"><div class="lblcar__track"><article class="lblcard lblcard--vela" data-type="vela" data-hex="#7B5560" style="--c:#7B5560"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-vela-chocolate.jpg" data-g="pet-lbl" data-cap="Etiqueta vela · Chocolate" aria-label="Ver etiqueta Chocolate en grande"><img src="img/pettunias/etiqueta-vela-chocolate.jpg" alt="Etiqueta Chocolate" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Vela de soja · 200 g</small><h4>Chocolate</h4></div><span class="lblcard__hex">#7B5560</span></div></article><article class="lblcard lblcard--vela" data-type="vela" data-hex="#C9907C" style="--c:#C9907C"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-vela-arandano.jpg" data-g="pet-lbl" data-cap="Etiqueta vela · Arándano" aria-label="Ver etiqueta Arándano en grande"><img src="img/pettunias/etiqueta-vela-arandano.jpg" alt="Etiqueta Arándano" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Vela de soja · 200 g</small><h4>Arándano</h4></div><span class="lblcard__hex">#C9907C</span></div></article><article class="lblcard lblcard--vela" data-type="vela" data-hex="#CEB69E" style="--c:#CEB69E"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-vela-sandalo.jpg" data-g="pet-lbl" data-cap="Etiqueta vela · Sándalo" aria-label="Ver etiqueta Sándalo en grande"><img src="img/pettunias/etiqueta-vela-sandalo.jpg" alt="Etiqueta Sándalo" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Vela de soja · 200 g</small><h4>Sándalo</h4></div><span class="lblcard__hex">#CEB69E</span></div></article><article class="lblcard lblcard--vela" data-type="vela" data-hex="#DBB9B0" style="--c:#DBB9B0"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-vela-rosa-vibrante.jpg" data-g="pet-lbl" data-cap="Etiqueta vela · Rosa Vibrante" aria-label="Ver etiqueta Rosa Vibrante en grande"><img src="img/pettunias/etiqueta-vela-rosa-vibrante.jpg" alt="Etiqueta Rosa Vibrante" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Vela de soja · 200 g</small><h4>Rosa Vibrante</h4></div><span class="lblcard__hex">#DBB9B0</span></div></article><article class="lblcard lblcard--vela" data-type="vela" data-hex="#A7B39B" style="--c:#A7B39B"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-vela-naranja-pimienta.jpg" data-g="pet-lbl" data-cap="Etiqueta vela · Naranja Pimienta" aria-label="Ver etiqueta Naranja Pimienta en grande"><img src="img/pettunias/etiqueta-vela-naranja-pimienta.jpg" alt="Etiqueta Naranja Pimienta" loading="lazy" draggable="false"></a><a class="lblcard__photo" href="img/pettunias/post-vela.jpg" data-g="pet-lbl-foto" data-cap="Naranja Pimienta · la etiqueta aplicada" title="Ver aplicada"><img src="img/pettunias/post-vela.jpg" alt="Naranja Pimienta con su etiqueta aplicada" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Vela de soja · 200 g</small><h4>Naranja Pimienta</h4></div><span class="lblcard__hex">#A7B39B</span></div></article><article class="lblcard lblcard--spray" data-type="spray" data-hex="#DBB9B0" style="--c:#DBB9B0"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-spray-peonia-completa.jpg" data-g="pet-lbl" data-cap="Etiqueta home spray · Peonía" aria-label="Ver etiqueta Peonía en grande"><img src="img/pettunias/etiqueta-spray-peonia-completa.jpg" alt="Etiqueta Peonía" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Home spray · 180 ml</small><h4>Peonía</h4></div><span class="lblcard__hex">#DBB9B0</span></div></article><article class="lblcard lblcard--spray" data-type="spray" data-hex="#DBB9B0" style="--c:#DBB9B0"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-spray-jazmin-rosa-completa.jpg" data-g="pet-lbl" data-cap="Etiqueta home spray · Jazmín Rosa" aria-label="Ver etiqueta Jazmín Rosa en grande"><img src="img/pettunias/etiqueta-spray-jazmin-rosa-completa.jpg" alt="Etiqueta Jazmín Rosa" loading="lazy" draggable="false"></a><a class="lblcard__photo" href="img/pettunias/lanzamiento-home-sprays.jpg" data-g="pet-lbl-foto" data-cap="Jazmín Rosa · la etiqueta aplicada" title="Ver aplicada"><img src="img/pettunias/lanzamiento-home-sprays.jpg" alt="Jazmín Rosa con su etiqueta aplicada" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Home spray · 180 ml</small><h4>Jazmín Rosa</h4></div><span class="lblcard__hex">#DBB9B0</span></div></article><article class="lblcard lblcard--spray" data-type="spray" data-hex="#A7B39B" style="--c:#A7B39B"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-spray-naranja-pimienta-completa.jpg" data-g="pet-lbl" data-cap="Etiqueta home spray · Naranja Pimienta" aria-label="Ver etiqueta Naranja Pimienta en grande"><img src="img/pettunias/etiqueta-spray-naranja-pimienta-completa.jpg" alt="Etiqueta Naranja Pimienta" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Home spray · 180 ml</small><h4>Naranja Pimienta</h4></div><span class="lblcard__hex">#A7B39B</span></div></article><article class="lblcard lblcard--spray" data-type="spray" data-hex="#A7B39B" style="--c:#A7B39B"><div class="lblcard__stage"><a href="img/pettunias/etiqueta-spray-cher-completa.jpg" data-g="pet-lbl" data-cap="Etiqueta home spray · Cher" aria-label="Ver etiqueta Cher en grande"><img src="img/pettunias/etiqueta-spray-cher-completa.jpg" alt="Etiqueta Cher" loading="lazy" draggable="false"></a></div><div class="lblcard__info"><div><small>Home spray · 180 ml</small><h4>Cher</h4></div><span class="lblcard__hex">#A7B39B</span></div></article></div></div>
-          <div class="lbldots"></div>
+          <p class="handnote center">cambian solas · tocá un color para elegir la fragancia ✦</p>
         </div>
       </div>
 
@@ -493,6 +499,6 @@
 </div>
 
 <script src="datos.js"></script>
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>

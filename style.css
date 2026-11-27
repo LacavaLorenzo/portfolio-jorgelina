@@ -738,6 +738,33 @@ button.tag { font: inherit; text-decoration: underline; color: #3a5fe0; cursor: 
 .lbldots i { width: 8px; height: 8px; border-radius: 99px; background: rgba(20,33,91,.2); transition: width .3s, background .3s; }
 .lbldots i.is-active { width: 24px; background: var(--azul-oscuro); }
 
+/* ---------- Pettunias · etiquetas aplicadas ---------- */
+.pkgshow { display: grid; gap: 1.6rem; }
+.pkgshow__intro { max-width: 640px; }
+.pkgshow__intro h3 { font-family: "Instrument Serif"; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.05; }
+.pkgshow__intro p { margin-top: .6rem; }
+.pkgshow__grid { display: grid; grid-template-columns: 1.06fr 1fr; gap: 1.6rem; align-items: start; }
+.pkg { margin: 0; padding: 1.1rem 1.1rem 1.3rem; border-radius: 28px; background: color-mix(in srgb, var(--c) 16%, #fbfaf6); box-shadow: var(--sombra); transition: background-color 1.4s ease; }
+.pkg__photo { position: relative; border-radius: 20px; overflow: hidden; background: #e9e4dc; }
+.pkg__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; pointer-events: none; user-select: none; }
+.pkg__photo img.is-on { opacity: 1; }
+.pkg__bar { position: absolute; left: 16px; right: 16px; bottom: 14px; height: 2px; border-radius: 2px; background: rgba(255,255,255,.45); overflow: hidden; }
+.pkg__bar i { display: block; height: 100%; width: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+.pkg__bar i.is-run { animation: pkgbar var(--t, 4200ms) linear forwards; }
+@keyframes pkgbar { to { transform: scaleX(1); } }
+.pkg__cap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .2rem 1rem; padding: 1rem .4rem .2rem; }
+.pkg__cap small { width: 100%; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: #6a7299; }
+.pkg__name { position: relative; min-height: 2.3rem; flex: 1; }
+.pkg__name b { display: block; font-family: "Instrument Serif"; font-weight: 400; font-size: clamp(1.8rem, 2.6vw, 2.2rem); line-height: 1.05; color: var(--azul-oscuro); transition: opacity .6s ease, transform .6s ease; }
+.pkg__name b.is-out { opacity: 0; transform: translateY(6px); }
+.pkg__hex { display: inline-flex; align-items: center; gap: .4rem; background: var(--blanco); border-radius: 999px; padding: .3rem .7rem .3rem .35rem; font-size: .75rem; font-weight: 600; color: var(--azul-oscuro); }
+.pkg__hex i { width: 16px; height: 16px; border-radius: 50%; background: var(--c); transition: background-color 1.4s ease; }
+.pkg__hex em { font-style: normal; transition: opacity .6s; }
+.pkg__chips { display: flex; flex-wrap: wrap; gap: .4rem; padding: .7rem .4rem 0; }
+.pkg__chips button { display: inline-flex; align-items: center; gap: .4rem; border: 1px solid rgba(20,33,91,.12); background: rgba(255,255,255,.7); color: var(--azul-oscuro); font: inherit; font-size: .78rem; padding: .3rem .7rem .3rem .35rem; border-radius: 999px; cursor: pointer; transition: background .3s, border-color .3s; }
+.pkg__chips button i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); }
+.pkg__chips button.is-on { background: var(--blanco); border-color: var(--azul-oscuro); font-weight: 600; }
+
 /* ---------- Servicios ---------- */
 .services__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .service { background: var(--blanco); border-radius: var(--radio); padding: 1.5rem 1.1rem; text-align: center; box-shadow: var(--sombra); transition: transform .3s ease-out, background .3s; }
@@ -800,6 +827,13 @@ button.tag { font: inherit; text-decoration: underline; color: #3a5fe0; cursor: 
   .brand { padding: 5rem 1.2rem 4rem; }
   .subtab { padding: .5rem .8rem; font-size: .88rem; }
   .ccard { flex-basis: 250px; }
+  .pkgshow__grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .pkg { padding: .8rem .8rem 1rem; border-radius: 22px; }
+  .pkg--spray .pkg__photo { aspect-ratio: 1 / 1.02 !important; }
+  .pkg--spray .pkg__photo img { object-position: 50% 62%; }
+  .pkg__chips button span { display: none; }
+  .pkg__chips button { padding: .3rem; }
+  .pkg__chips button i { width: 20px; height: 20px; }
   .rhl { grid-template-columns: 1fr 1fr; gap: .7rem; }
   .rhl__item { padding: 1rem; }
   .rhl__item span { font-size: .78rem; }
